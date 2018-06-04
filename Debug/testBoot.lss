@@ -1,0 +1,227 @@
+
+testBoot.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000024e  00020000  00020000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00802000  00802000  000002a2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000002a2  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002d4  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  00000314  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00003839  00000000  00000000  00000334  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000033df  00000000  00000000  00003b6d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000004cd  00000000  00000000  00006f4c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000024  00000000  00000000  0000741c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000265a  00000000  00000000  00007440  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000015  00000000  00000000  00009a9a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00009aaf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00020000 <__vectors>:
+   20000:	0d 94 fa 00 	jmp	0x201f4	; 0x201f4 <__ctors_end>
+   20004:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20008:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2000c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20010:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20014:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20018:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2001c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20020:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20024:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20028:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2002c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20030:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20034:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20038:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2003c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20040:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20044:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20048:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2004c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20050:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20054:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20058:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2005c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20060:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20064:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20068:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2006c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20070:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20074:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20078:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2007c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20080:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20084:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20088:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2008c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20090:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20094:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20098:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2009c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200a0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200a4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200a8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200ac:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200b0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200b4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200b8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200bc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200c0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200c4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200c8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200cc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200d0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200d4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200d8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200dc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200e0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200e4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200e8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200ec:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200f0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200f4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200f8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   200fc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20100:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20104:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20108:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2010c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20110:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20114:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20118:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2011c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20120:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20124:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20128:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2012c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20130:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20134:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20138:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2013c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20140:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20144:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20148:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2014c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20150:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20154:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20158:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2015c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20160:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20164:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20168:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2016c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20170:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20174:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20178:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2017c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20180:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20184:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20188:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2018c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20190:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20194:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   20198:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   2019c:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201a0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201a4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201a8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201ac:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201b0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201b4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201b8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201bc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201c0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201c4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201c8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201cc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201d0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201d4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201d8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201dc:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201e0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201e4:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201e8:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201ec:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+   201f0:	0d 94 0a 01 	jmp	0x20214	; 0x20214 <__bad_interrupt>
+
+000201f4 <__ctors_end>:
+   201f4:	11 24       	eor	r1, r1
+   201f6:	1f be       	out	0x3f, r1	; 63
+   201f8:	cf ef       	ldi	r28, 0xFF	; 255
+   201fa:	cd bf       	out	0x3d, r28	; 61
+   201fc:	df e3       	ldi	r29, 0x3F	; 63
+   201fe:	de bf       	out	0x3e, r29	; 62
+   20200:	01 e0       	ldi	r16, 0x01	; 1
+   20202:	0c bf       	out	0x3c, r16	; 60
+   20204:	18 be       	out	0x38, r1	; 56
+   20206:	19 be       	out	0x39, r1	; 57
+   20208:	1a be       	out	0x3a, r1	; 58
+   2020a:	1b be       	out	0x3b, r1	; 59
+   2020c:	0f 94 0c 01 	call	0x20218	; 0x20218 <main>
+   20210:	0d 94 25 01 	jmp	0x2024a	; 0x2024a <_exit>
+
+00020214 <__bad_interrupt>:
+   20214:	0d 94 00 00 	jmp	0x20000	; 0x20000 <__vectors>
+
+00020218 <main>:
+
+
+
+ int main(void) 
+{
+   PORTK.DIRSET = PIN0_bm ;
+   20218:	81 e0       	ldi	r24, 0x01	; 1
+   2021a:	80 93 21 07 	sts	0x0721, r24	; 0x800721 <__TEXT_REGION_LENGTH__+0x700721>
+
+class CSerial{
+	public:
+	CSerial(int rate)
+	{
+		USARTC0_BAUDCTRLB = 0;
+   2021e:	10 92 a7 08 	sts	0x08A7, r1	; 0x8008a7 <__TEXT_REGION_LENGTH__+0x7008a7>
+		USARTC0_BAUDCTRLA = rate; //  0x68(104) 19200 bod  system clock 32Mhz   // 200Kbit - 9
+   20222:	88 e6       	ldi	r24, 0x68	; 104
+   20224:	80 93 a6 08 	sts	0x08A6, r24	; 0x8008a6 <__TEXT_REGION_LENGTH__+0x7008a6>
+		USARTC0_CTRLA = USART_RXCINTLVL_MED_gc; //подключение прерываний
+   20228:	80 e2       	ldi	r24, 0x20	; 32
+   2022a:	80 93 a3 08 	sts	0x08A3, r24	; 0x8008a3 <__TEXT_REGION_LENGTH__+0x7008a3>
+		USARTC0_CTRLC = USART_CHSIZE_8BIT_gc; //8 data bits, no parity and 1 stop bit
+   2022e:	83 e0       	ldi	r24, 0x03	; 3
+   20230:	80 93 a5 08 	sts	0x08A5, r24	; 0x8008a5 <__TEXT_REGION_LENGTH__+0x7008a5>
+		USARTC0_CTRLB = USART_TXEN_bm | USART_RXEN_bm; //Включение приема передатчика
+   20234:	88 e1       	ldi	r24, 0x18	; 24
+   20236:	80 93 a4 08 	sts	0x08A4, r24	; 0x8008a4 <__TEXT_REGION_LENGTH__+0x7008a4>
+		PORTC.DIRSET = PIN3_bm;  // настройка ноги 3 порта С контроллера Xmega на выход!для передачи данных в микросхему Uart
+   2023a:	88 e0       	ldi	r24, 0x08	; 8
+   2023c:	80 93 41 06 	sts	0x0641, r24	; 0x800641 <__TEXT_REGION_LENGTH__+0x700641>
+   void (*exitboot)() = 0x0000; 
+    /* Replace with your application code */
+
+    while (1) 
+    { 	  
+	  EIND = 0x00; 
+   20240:	1c be       	out	0x3c, r1	; 60
+	  exitboot();
+   20242:	e0 e0       	ldi	r30, 0x00	; 0
+   20244:	f0 e0       	ldi	r31, 0x00	; 0
+   20246:	19 95       	eicall
+   20248:	fb cf       	rjmp	.-10     	; 0x20240 <main+0x28>
+
+0002024a <_exit>:
+   2024a:	f8 94       	cli
+
+0002024c <__stop_program>:
+   2024c:	ff cf       	rjmp	.-2      	; 0x2024c <__stop_program>
