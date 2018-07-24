@@ -7,11 +7,42 @@ Discarded input sections
 
  .data          0x00000000        0x0 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
  .bss           0x00000000        0x0 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
+ .text          0x00000000       0xd2 adca.o
+ .data          0x00000000        0x0 adca.o
+ .bss           0x00000000        0x0 adca.o
+ .debug_line    0x00000000      0x29d adca.o
+ .debug_info    0x00000000       0x7c adca.o
+ .debug_abbrev  0x00000000       0x14 adca.o
+ .debug_aranges
+                0x00000000       0x20 adca.o
+ .data          0x00000000        0x0 CCP_Write.o
+ .bss           0x00000000        0x0 CCP_Write.o
+ .text          0x00000000        0x0 flash.o
+ .data          0x00000000        0x0 flash.o
+ .bss           0x00000000        0x0 flash.o
+ .text._Z48answer_to_computer_when_page_to_flash_is_written10FLASH_fifo
+                0x00000000        0x4 flash.o
+ .text._Z23erase_flash_page_bufferv
+                0x00000000       0x34 flash.o
+ .text._Z25to_take_address_type_longhh
+                0x00000000      0x1a2 flash.o
+ .text._Z44recieve_datas_through_USB_and_write_to_flashhhPh
+                0x00000000      0x190 flash.o
+ .debug_info    0x00000000      0x7ae flash.o
+ .debug_abbrev  0x00000000      0x1d3 flash.o
+ .debug_loc     0x00000000      0xbd0 flash.o
+ .debug_aranges
+                0x00000000       0x38 flash.o
+ .debug_ranges  0x00000000       0x28 flash.o
+ .debug_line    0x00000000      0x30a flash.o
+ .debug_str     0x00000000      0xc3a flash.o
+ .comment       0x00000000       0x31 flash.o
+ .debug_frame   0x00000000      0x108 flash.o
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
  .text._ZN7CSerial15SendconststringEPKc
-                0x00000000       0x2c main.o
+                0x00000000       0x2a main.o
  .text._ZN7CSerial15SendflashstringEPKc
                 0x00000000       0x32 main.o
  .text._ZN4CPin6outsetEv
@@ -26,6 +57,12 @@ Discarded input sections
                 0x00000000        0x4 main.o
  .text._ZN4CTwi10sendaddresEhi
                 0x00000000       0x16 main.o
+ .text._ZN4CTwi8senddataEh
+                0x00000000       0x10 main.o
+ .text._ZN4CTwi8readdataEi
+                0x00000000       0x22 main.o
+ .data          0x00000000        0x0 sp_driver.o
+ .bss           0x00000000        0x0 sp_driver.o
  .text          0x00000000        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  .data          0x00000000        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
@@ -58,7 +95,11 @@ user_signatures  0x00850000         0x00000400         rw !x
 Linker script and memory map
 
 LOAD E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
+LOAD adca.o
+LOAD CCP_Write.o
+LOAD flash.o
 LOAD main.o
+LOAD sp_driver.o
 START GROUP
 LOAD e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega7\libm.a
 END GROUP
@@ -169,7 +210,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00020000      0x416
+.text           0x00020000      0x726
  *(.vectors)
  .vectors       0x00020000      0x1f4 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
                 0x00020000                __vector_default
@@ -348,33 +389,63 @@ END GROUP
                 0x00020214                __vector_87
                 0x00020214                __vector_65
                 0x00020214                __vector_120
-                0x00020218                . = ALIGN (0x2)
+ .text          0x00020218       0x16 CCP_Write.o
+                0x00020218                CCP_CLK
+                0x00020222                CCP_RST
+ .text          0x0002022e      0x12a sp_driver.o
+                0x0002022e                SP_ReadByte
+                0x0002023a                SP_ReadWord
+                0x00020248                SP_ReadCalibrationByte
+                0x0002024c                SP_ReadUserSignatureByte
+                0x00020250                SP_ReadFuseByte
+                0x00020266                SP_WriteLockBits
+                0x0002026e                SP_ReadLockBits
+                0x00020274                SP_EraseUserSignatureRow
+                0x0002027c                SP_WriteUserSignatureRow
+                0x00020284                SP_EraseApplicationSection
+                0x0002028c                SP_EraseApplicationPage
+                0x00020298                SP_LoadFlashWord
+                0x000202a2                SP_ReadFlashPage
+                0x000202c4                SP_WriteApplicationPage
+                0x000202d0                SP_EraseWriteApplicationPage
+                0x000202dc                SP_EraseFlashBuffer
+                0x000202e4                SP_EraseBootPage
+                0x000202f0                SP_WriteBootPage
+                0x000202fc                SP_EraseWriteBootPage
+                0x00020308                SP_ApplicationCRC
+                0x0002030c                SP_BootCRC
+                0x00020310                SP_LockSPM
+                0x0002031e                SP_WaitForSPM
+                0x00020358                . = ALIGN (0x2)
  *(.text.*)
- .text._ZN7CSerial12RecievedcharEv
-                0x00020218       0x10 main.o
-                0x00020218                _ZN7CSerial12RecievedcharEv
+ .text._ZN7CSerial13RecievedblockEPhi
+                0x00020358       0x48 main.o
+                0x00020358                _ZN7CSerial13RecievedblockEPhi
+ .text._ZN7CSerial13TransmitBlockEPhi
+                0x000203a0       0x38 main.o
+                0x000203a0                _ZN7CSerial13TransmitBlockEPhi
+ .text._ZN7CSerial12RecievedcharERh
+                0x000203d8       0x74 main.o
+                0x000203d8                _ZN7CSerial12RecievedcharERh
  .text._ZN7CSerial8SendcharEh
-                0x00020228       0x10 main.o
-                0x00020228                _ZN7CSerial8SendcharEh
+                0x0002044c       0x10 main.o
+                0x0002044c                _ZN7CSerial8SendcharEh
  .text._ZN4CPin5OnPinEv
-                0x00020238       0x22 main.o
-                0x00020238                _ZN4CPin5OnPinEv
- .text._ZN4CTwi8senddataEh
-                0x0002025a       0x10 main.o
-                0x0002025a                _ZN4CTwi8senddataEh
- .text._ZN4CTwi8readdataEi
-                0x0002026a       0x22 main.o
-                0x0002026a                _ZN4CTwi8readdataEi
- .text.main     0x0002028c       0xc6 main.o
-                0x0002028c                main
+                0x0002045c       0x22 main.o
+                0x0002045c                _ZN4CPin5OnPinEv
+ .text._Z8exitbootv
+                0x0002047e        0xa main.o
+                0x0002047e                _Z8exitbootv
+ .text.main     0x00020488       0xb8 main.o
+                0x00020488                main
  .text.__vector_25
-                0x00020352       0xc0 main.o
-                0x00020352                __vector_25
-                0x00020412                . = ALIGN (0x2)
+                0x00020540      0x1e2 main.o
+                0x00020540                __vector_25
+                0x00020722                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00020412        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
-                0x00020412                _exit
-                0x00020412                exit
+ .fini9         0x00020722        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+                0x00020722                _exit
+                0x00020722                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -393,11 +464,15 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00020412        0x4 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+ .fini0         0x00020722        0x4 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  *(.fini0)
-                0x00020416                _etext = .
+                0x00020726                _etext = .
 
-.data           0x00802000        0x0 load address 0x00020416
+.BOOT           0x00020726       0x3a
+ .BOOT          0x00020726       0x3a sp_driver.o
+                0x00020726                SP_LoadFlashPage
+
+.data           0x00802000        0x0 load address 0x00020760
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -415,8 +490,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00020416                __data_load_start = LOADADDR (.data)
-                0x00020416                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00020760                __data_load_start = LOADADDR (.data)
+                0x00020760                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802000        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -487,42 +562,52 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0x90
+.debug_aranges  0x00000000       0xf0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x90 main.o
+                0x00000000       0x20 CCP_Write.o
+ .debug_aranges
+                0x00000020       0xa8 main.o
+ .debug_aranges
+                0x000000c8       0x28 sp_driver.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x4408
+.debug_info     0x00000000     0x49f1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x354c E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_info    0x0000354c      0xebc main.o
+ .debug_info    0x0000354c       0x81 CCP_Write.o
+ .debug_info    0x000035cd     0x13a7 main.o
+ .debug_info    0x00004974       0x7d sp_driver.o
 
-.debug_abbrev   0x00000000     0x3591
+.debug_abbrev   0x00000000     0x3641
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x327a E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_abbrev  0x0000327a      0x317 main.o
+ .debug_abbrev  0x0000327a       0x14 CCP_Write.o
+ .debug_abbrev  0x0000328e      0x3a1 main.o
+ .debug_abbrev  0x0000362f       0x12 sp_driver.o
 
-.debug_line     0x00000000      0x7a2
+.debug_line     0x00000000      0xcef
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x3a9 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_line    0x000003a9      0x3f9 main.o
+ .debug_line    0x000003a9       0x6e CCP_Write.o
+ .debug_line    0x00000417      0x526 main.o
+ .debug_line    0x0000093d      0x3b2 sp_driver.o
 
-.debug_frame    0x00000000      0x194
+.debug_frame    0x00000000      0x240
  *(.debug_frame)
- .debug_frame   0x00000000      0x194 main.o
+ .debug_frame   0x00000000      0x240 main.o
 
-.debug_str      0x00000000     0x2ad4
+.debug_str      0x00000000     0x2d4d
  *(.debug_str)
  .debug_str     0x00000000     0x23b9 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_str     0x000023b9      0x71b main.o
-                                0x782 (size before relaxing)
+ .debug_str     0x000023b9      0x994 main.o
+                                0xa1a (size before relaxing)
 
-.debug_loc      0x00000000      0x7c0
+.debug_loc      0x00000000      0xa67
  *(.debug_loc)
- .debug_loc     0x00000000      0x7c0 main.o
+ .debug_loc     0x00000000      0xa67 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -542,9 +627,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xb0
+.debug_ranges   0x00000000      0x118
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xb0 main.o
+ .debug_ranges  0x00000000       0xf8 main.o
+ .debug_ranges  0x000000f8       0x20 sp_driver.o
 
 .debug_macro
  *(.debug_macro)

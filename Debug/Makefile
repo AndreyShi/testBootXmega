@@ -37,30 +37,40 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.cpp
+../bootboard.cpp
 
 
-PREPROCESSING_SRCS += 
+PREPROCESSING_SRCS +=  \
+../CCP_Write.s \
+../sp_driver.S
 
 
 ASM_SRCS += 
 
 
 OBJS +=  \
-main.o
+CCP_Write.o \
+bootboard.o \
+sp_driver.o
 
 OBJS_AS_ARGS +=  \
-main.o
+CCP_Write.o \
+bootboard.o \
+sp_driver.o
 
 C_DEPS +=  \
-main.d
+CCP_Write.d \
+bootboard.d \
+sp_driver.d
 
 C_DEPS_AS_ARGS +=  \
-main.d
+CCP_Write.d \
+bootboard.d \
+sp_driver.d
 
-OUTPUT_FILE_PATH +=testBoot.elf
+OUTPUT_FILE_PATH +=bootBoard.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=testBoot.elf
+OUTPUT_FILE_PATH_AS_ARGS +=bootBoard.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -89,6 +99,34 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU Assembler
+./CCP_Write.o: .././CCP_Write.s
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU Assembler : 5.4.0
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -I "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./sp_driver.o: .././sp_driver.S
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU Assembler : 5.4.0
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -I "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+
+./%.o: .././%.s
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU Assembler : 5.4.0
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -I "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./%.o: .././%.S
+	@echo Building file: $<
+	@echo Invoking: AVR8/GNU Assembler : 5.4.0
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -I "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\include"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
 
 
 
@@ -107,13 +145,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR8/GNU Linker : 5.4.0
-	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="testBoot.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -Wl,--section-start=.text=0x20000  
+	$(QUOTE)E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-g++.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="bootBoard.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atxmega128a1 -B "E:\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega128a1" -Wl,--section-start=.text=0x20000  
 	@echo Finished building target: $@
-	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "testBoot.elf" "testBoot.hex"
-	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "testBoot.elf" "testBoot.eep" || exit 0
-	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "testBoot.elf" > "testBoot.lss"
-	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "testBoot.elf" "testBoot.srec"
-	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "testBoot.elf"
+	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "bootBoard.elf" "bootBoard.hex"
+	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "bootBoard.elf" "bootBoard.eep" || exit 0
+	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "bootBoard.elf" > "bootBoard.lss"
+	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "bootBoard.elf" "bootBoard.srec"
+	"E:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "bootBoard.elf"
 	
 	
 
@@ -125,5 +163,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "testBoot.elf" "testBoot.a" "testBoot.hex" "testBoot.lss" "testBoot.eep" "testBoot.map" "testBoot.srec" "testBoot.usersignatures"
+	rm -rf "bootBoard.elf" "bootBoard.a" "bootBoard.hex" "bootBoard.lss" "bootBoard.eep" "bootBoard.map" "bootBoard.srec" "bootBoard.usersignatures"
 	

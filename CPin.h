@@ -27,6 +27,7 @@ protected:
 
 	   void outset();
 	   void outclr();
+	   void shim10n100();
 	   void PullDown(int numPin);
 	   bool OnPin();                       // 80 bytes PM
 };
@@ -40,6 +41,16 @@ protected:
 void CPin::outclr()
 {
     portn->OUTCLR = pin; 
+}
+
+
+
+void CPin::shim10n100()
+{
+	outset();
+	_delay_us(10);
+	outclr();
+	_delay_us(100);
 }
 
 void CPin::PullDown(int numPin)
