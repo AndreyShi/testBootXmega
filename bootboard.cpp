@@ -9,7 +9,7 @@
 #define APP_END                   (APP_SECTION_START + APP_SECTION_SIZE)
 
 #include <avr/io.h>
-#include <avr/pgmspace.h>
+//#include <avr/pgmspace.h>
 #include <avr/interrupt.h>        // 50 bytes PM
 #include <util/delay.h>
 #include "CSerial.h"
@@ -44,14 +44,14 @@ void exitboot(){
    CCpu          cpu32Mhz;
    CInterrupt    inter(Boot);
    CPin          pin0portK(&PORTK,PIN0_bm,pin_out);
-   CPin          pin2portK(&PORTK,PIN2_bm,pin_out);
+   CPin          pin2portQ(&PORTQ,PIN2_bm,pin_out);
    CPin          pin5portK(&PORTK,PIN5_bm,pin_in);
    CSerial       InitUart(bdrate200000,microe793);
    //CSerial       InitUart(bdrate200000,lir540);
    CTwi          InitTwi(Twi100Khz);
  
    
-   pin5portK.PullDown(5);
+   pin5portK.PullDown();
 
    bool Onboot  = false;   
              
@@ -60,7 +60,7 @@ void exitboot(){
     while (1) 
     { 	 
 	   pin0portK.shim10n100();
-	   //pin2portK.shim10n100();
+	   
 
 	    if(pin5portK.OnPin()) // || Onboot
 	    {
@@ -69,6 +69,7 @@ void exitboot(){
 	    if(!pin5portK.OnPin() || end_of_flashing)
 	    {
 		    pin0portK.outclr();
+			pin2portQ.shim10n100();
 		    exitboot();
 	    }
     }

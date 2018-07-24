@@ -110,11 +110,11 @@ void CSerial::Sendconststring(const char *string)
 
 void CSerial::Sendflashstring(const char *string)
 {
-	while(pgm_read_byte(string)!='\0')
-	{
-		Sendchar(pgm_read_byte(string));
-		string++;
-	}
+//	while(pgm_read_byte(string)!='\0')
+//	{
+//		Sendchar(pgm_read_byte(string));
+//		string++;
+//	}
 }
 
 #endif /* CSERIAL_H_ */

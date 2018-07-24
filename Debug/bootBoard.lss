@@ -3,33 +3,33 @@ bootBoard.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000790  00020000  00020000  00000074  2**1
+  0 .text         00000818  00020000  00020000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .BOOT         0000003a  00020790  00020790  00000804  2**0
+  1 .BOOT         0000003a  00020818  00020818  0000088c  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .data         00000000  00802000  00802000  0000083e  2**0
+  2 .data         00000000  00802000  00802000  000008c6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  3 .bss          00000001  00802000  00802000  0000083e  2**0
+  3 .bss          00000001  00802000  00802000  000008c6  2**0
                   ALLOC
-  4 .comment      00000030  00000000  00000000  0000083e  2**0
+  4 .comment      00000030  00000000  00000000  000008c6  2**0
                   CONTENTS, READONLY
-  5 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000870  2**2
+  5 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008f8  2**2
                   CONTENTS, READONLY
-  6 .debug_aranges 000000d8  00000000  00000000  000008b0  2**3
+  6 .debug_aranges 000000d8  00000000  00000000  00000938  2**3
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00004a4e  00000000  00000000  00000988  2**0
+  7 .debug_info   000049bb  00000000  00000000  00000a10  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 0000367b  00000000  00000000  000053d6  2**0
+  8 .debug_abbrev 0000367b  00000000  00000000  000053cb  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00000d52  00000000  00000000  00008a51  2**0
+  9 .debug_line   00000dac  00000000  00000000  00008a46  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000250  00000000  00000000  000097a4  2**2
+ 10 .debug_frame  0000023c  00000000  00000000  000097f4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    00002de5  00000000  00000000  000099f4  2**0
+ 11 .debug_str    00002dcc  00000000  00000000  00009a30  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    00000ba8  00000000  00000000  0000c7d9  2**0
+ 12 .debug_loc    00000a37  00000000  00000000  0000c7fc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000108  00000000  00000000  0000d388  2**3
+ 13 .debug_ranges 000000f0  00000000  00000000  0000d238  2**3
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -60,7 +60,7 @@ Disassembly of section .text:
    20058:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
    2005c:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
    20060:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
-   20064:	0d 94 c9 02 	jmp	0x20592	; 0x20592 <__vector_25>
+   20064:	0d 94 0d 03 	jmp	0x2061a	; 0x2061a <__vector_25>
    20068:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
    2006c:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
    20070:	0d 94 12 01 	jmp	0x20224	; 0x20224 <__bad_interrupt>
@@ -188,8 +188,8 @@ Disassembly of section .text:
    20216:	a1 30       	cpi	r26, 0x01	; 1
    20218:	b2 07       	cpc	r27, r18
    2021a:	e1 f7       	brne	.-8      	; 0x20214 <.do_clear_bss_loop>
-   2021c:	0f 94 5e 02 	call	0x204bc	; 0x204bc <main>
-   20220:	0d 94 c6 03 	jmp	0x2078c	; 0x2078c <_exit>
+   2021c:	0f 94 96 02 	call	0x2052c	; 0x2052c <main>
+   20220:	0d 94 0a 04 	jmp	0x20814	; 0x20814 <_exit>
 
 00020224 <__bad_interrupt>:
    20224:	0d 94 00 00 	jmp	0x20000	; 0x20000 <__vectors>
@@ -314,7 +314,7 @@ SP_EraseUserSignatureRow:
 	ldi	r20, NVM_CMD_ERASE_USER_SIG_ROW_gc ; Prepare NVM command in R20.
    20270:	48 e1       	ldi	r20, 0x18	; 24
 	jmp 	SP_CommonSPM                       ; Jump to common SPM code.
-   20272:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   20272:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 00020276 <SP_WriteUserSignatureRow>:
 
@@ -327,7 +327,7 @@ SP_WriteUserSignatureRow:
 	ldi	r20, NVM_CMD_WRITE_USER_SIG_ROW_gc  ; Prepare NVM command in R20.
    20278:	4a e1       	ldi	r20, 0x1A	; 26
 	jmp	SP_CommonSPM                        ; Jump to common SPM code.
-   2027a:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   2027a:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 0002027e <SP_EraseApplicationSection>:
 
@@ -340,7 +340,7 @@ SP_EraseApplicationSection:
 	ldi	r20, NVM_CMD_ERASE_APP_gc  ; Prepare NVM command in R20.
    20280:	40 e2       	ldi	r20, 0x20	; 32
 	jmp	SP_CommonSPM               ; Jump to common SPM code.
-   20282:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   20282:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 00020286 <SP_EraseApplicationPage>:
 
@@ -357,7 +357,7 @@ SP_EraseApplicationPage:
 	ldi	r20, NVM_CMD_ERASE_APP_PAGE_gc  ; Prepare NVM command in R20.
    2028c:	42 e2       	ldi	r20, 0x22	; 34
 	jmp	SP_CommonSPM                    ; Jump to common SPM code.
-   2028e:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   2028e:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 00020292 <SP_LoadFlashWord>:
 
@@ -372,7 +372,7 @@ SP_LoadFlashWord:
 	ldi	r20, NVM_CMD_LOAD_FLASH_BUFFER_gc  ; Prepare NVM command in R20.
    20296:	43 e2       	ldi	r20, 0x23	; 35
 	jmp	SP_CommonSPM                       ; Jump to common SPM code.
-   20298:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   20298:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 0002029c <SP_ReadFlashPage>:
 .section .text		
@@ -447,7 +447,7 @@ SP_WriteApplicationPage:
 	ldi	r20, NVM_CMD_WRITE_APP_PAGE_gc   ; Prepare NVM command in R20.
    202c4:	44 e2       	ldi	r20, 0x24	; 36
 	jmp	SP_CommonSPM                     ; Jump to common SPM code.
-   202c6:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202c6:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 000202ca <SP_EraseWriteApplicationPage>:
 
@@ -464,7 +464,7 @@ SP_EraseWriteApplicationPage:
 	ldi	r20, NVM_CMD_ERASE_WRITE_APP_PAGE_gc  ; Prepare NVM command in R20.
    202d0:	45 e2       	ldi	r20, 0x25	; 37
 	jmp	SP_CommonSPM                          ; Jump to common SPM code.
-   202d2:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202d2:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 000202d6 <SP_EraseFlashBuffer>:
 
@@ -477,7 +477,7 @@ SP_EraseFlashBuffer:
 	ldi	r20, NVM_CMD_ERASE_FLASH_BUFFER_gc  ; Prepare NVM command in R20.
    202d8:	46 e2       	ldi	r20, 0x26	; 38
 	jmp	SP_CommonSPM                        ; Jump to common SPM code.
-   202da:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202da:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 000202de <SP_EraseBootPage>:
 
@@ -494,7 +494,7 @@ SP_EraseBootPage:
 	ldi	r20, NVM_CMD_ERASE_BOOT_PAGE_gc    ; Prepare NVM command in R20.
    202e4:	4a e2       	ldi	r20, 0x2A	; 42
 	jmp	SP_CommonSPM                       ; Jump to common SPM code.
-   202e6:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202e6:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 000202ea <SP_WriteBootPage>:
 
@@ -511,7 +511,7 @@ SP_WriteBootPage:
 	ldi	r20, NVM_CMD_WRITE_BOOT_PAGE_gc  ; Prepare NVM command in R20.
    202f0:	4c e2       	ldi	r20, 0x2C	; 44
 	jmp	SP_CommonSPM                     ; Jump to common SPM code.
-   202f2:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202f2:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 000202f6 <SP_EraseWriteBootPage>:
 
@@ -528,7 +528,7 @@ SP_EraseWriteBootPage:
 	ldi	r20, NVM_CMD_ERASE_WRITE_BOOT_PAGE_gc  ; Prepare NVM command in R20.
    202fc:	4d e2       	ldi	r20, 0x2D	; 45
 	jmp	SP_CommonSPM                           ; Jump to common SPM code.
-   202fe:	0d 94 db 03 	jmp	0x207b6	; 0x207b6 <SP_CommonSPM>
+   202fe:	0d 94 1f 04 	jmp	0x2083e	; 0x2083e <SP_CommonSPM>
 
 00020302 <SP_ApplicationCRC>:
 
@@ -796,641 +796,719 @@ SP_CommonLPM:
    2047e:	00 00       	nop
    20480:	08 95       	ret
 
-00020482 <_ZN4CPin5OnPinEv>:
-   20482:	dc 01       	movw	r26, r24
-   20484:	ed 91       	ld	r30, X+
-   20486:	fc 91       	ld	r31, X
-   20488:	11 97       	sbiw	r26, 0x01	; 1
-   2048a:	20 85       	ldd	r18, Z+8	; 0x08
-   2048c:	30 e0       	ldi	r19, 0x00	; 0
-   2048e:	12 96       	adiw	r26, 0x02	; 2
-   20490:	8d 91       	ld	r24, X+
-   20492:	9c 91       	ld	r25, X
-   20494:	13 97       	sbiw	r26, 0x03	; 3
-   20496:	28 23       	and	r18, r24
-   20498:	39 23       	and	r19, r25
-   2049a:	81 e0       	ldi	r24, 0x01	; 1
-   2049c:	23 2b       	or	r18, r19
-   2049e:	09 f4       	brne	.+2      	; 0x204a2 <_ZN4CPin5OnPinEv+0x20>
-   204a0:	80 e0       	ldi	r24, 0x00	; 0
-   204a2:	08 95       	ret
+00020482 <_ZN4CPin8PullDownEv>:
+   20482:	fc 01       	movw	r30, r24
+   20484:	82 81       	ldd	r24, Z+2	; 0x02
+   20486:	93 81       	ldd	r25, Z+3	; 0x03
+   20488:	89 2b       	or	r24, r25
+   2048a:	29 f4       	brne	.+10     	; 0x20496 <_ZN4CPin8PullDownEv+0x14>
+   2048c:	a0 81       	ld	r26, Z
+   2048e:	b1 81       	ldd	r27, Z+1	; 0x01
+   20490:	80 e1       	ldi	r24, 0x10	; 16
+   20492:	50 96       	adiw	r26, 0x10	; 16
+   20494:	8c 93       	st	X, r24
+   20496:	82 81       	ldd	r24, Z+2	; 0x02
+   20498:	93 81       	ldd	r25, Z+3	; 0x03
+   2049a:	01 97       	sbiw	r24, 0x01	; 1
+   2049c:	29 f4       	brne	.+10     	; 0x204a8 <_ZN4CPin8PullDownEv+0x26>
+   2049e:	a0 81       	ld	r26, Z
+   204a0:	b1 81       	ldd	r27, Z+1	; 0x01
+   204a2:	80 e1       	ldi	r24, 0x10	; 16
+   204a4:	51 96       	adiw	r26, 0x11	; 17
+   204a6:	8c 93       	st	X, r24
+   204a8:	82 81       	ldd	r24, Z+2	; 0x02
+   204aa:	93 81       	ldd	r25, Z+3	; 0x03
+   204ac:	02 97       	sbiw	r24, 0x02	; 2
+   204ae:	29 f4       	brne	.+10     	; 0x204ba <_ZN4CPin8PullDownEv+0x38>
+   204b0:	a0 81       	ld	r26, Z
+   204b2:	b1 81       	ldd	r27, Z+1	; 0x01
+   204b4:	80 e1       	ldi	r24, 0x10	; 16
+   204b6:	52 96       	adiw	r26, 0x12	; 18
+   204b8:	8c 93       	st	X, r24
+   204ba:	82 81       	ldd	r24, Z+2	; 0x02
+   204bc:	93 81       	ldd	r25, Z+3	; 0x03
+   204be:	03 97       	sbiw	r24, 0x03	; 3
+   204c0:	29 f4       	brne	.+10     	; 0x204cc <_ZN4CPin8PullDownEv+0x4a>
+   204c2:	a0 81       	ld	r26, Z
+   204c4:	b1 81       	ldd	r27, Z+1	; 0x01
+   204c6:	80 e1       	ldi	r24, 0x10	; 16
+   204c8:	53 96       	adiw	r26, 0x13	; 19
+   204ca:	8c 93       	st	X, r24
+   204cc:	82 81       	ldd	r24, Z+2	; 0x02
+   204ce:	93 81       	ldd	r25, Z+3	; 0x03
+   204d0:	04 97       	sbiw	r24, 0x04	; 4
+   204d2:	29 f4       	brne	.+10     	; 0x204de <_ZN4CPin8PullDownEv+0x5c>
+   204d4:	a0 81       	ld	r26, Z
+   204d6:	b1 81       	ldd	r27, Z+1	; 0x01
+   204d8:	80 e1       	ldi	r24, 0x10	; 16
+   204da:	54 96       	adiw	r26, 0x14	; 20
+   204dc:	8c 93       	st	X, r24
+   204de:	82 81       	ldd	r24, Z+2	; 0x02
+   204e0:	93 81       	ldd	r25, Z+3	; 0x03
+   204e2:	05 97       	sbiw	r24, 0x05	; 5
+   204e4:	29 f4       	brne	.+10     	; 0x204f0 <_ZN4CPin8PullDownEv+0x6e>
+   204e6:	01 90       	ld	r0, Z+
+   204e8:	f0 81       	ld	r31, Z
+   204ea:	e0 2d       	mov	r30, r0
+   204ec:	80 e1       	ldi	r24, 0x10	; 16
+   204ee:	85 8b       	std	Z+21, r24	; 0x15
+   204f0:	08 95       	ret
 
-000204a4 <_Z8exitbootv>:
+000204f2 <_ZN4CPin5OnPinEv>:
+   204f2:	dc 01       	movw	r26, r24
+   204f4:	ed 91       	ld	r30, X+
+   204f6:	fc 91       	ld	r31, X
+   204f8:	11 97       	sbiw	r26, 0x01	; 1
+   204fa:	20 85       	ldd	r18, Z+8	; 0x08
+   204fc:	30 e0       	ldi	r19, 0x00	; 0
+   204fe:	12 96       	adiw	r26, 0x02	; 2
+   20500:	8d 91       	ld	r24, X+
+   20502:	9c 91       	ld	r25, X
+   20504:	13 97       	sbiw	r26, 0x03	; 3
+   20506:	28 23       	and	r18, r24
+   20508:	39 23       	and	r19, r25
+   2050a:	81 e0       	ldi	r24, 0x01	; 1
+   2050c:	23 2b       	or	r18, r19
+   2050e:	09 f4       	brne	.+2      	; 0x20512 <_ZN4CPin5OnPinEv+0x20>
+   20510:	80 e0       	ldi	r24, 0x00	; 0
+   20512:	08 95       	ret
+
+00020514 <_Z8exitbootv>:
 bool end_of_flashing;
 void exitboot();
 
 void exitboot(){
 	void (*gotozero)() = 0x0000;
 	cli();
-   204a4:	f8 94       	cli
+   20514:	f8 94       	cli
 	SP_WaitForSPM();
-   204a6:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
+   20516:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
 	SP_LockSPM();
-   204aa:	0f 94 85 01 	call	0x2030a	; 0x2030a <SP_LockSPM>
+   2051a:	0f 94 85 01 	call	0x2030a	; 0x2030a <SP_LockSPM>
 	USARTD1_CTRLA = USART_RXCINTLVL_OFF_gc;
-   204ae:	10 92 b3 09 	sts	0x09B3, r1	; 0x8009b3 <__TEXT_REGION_LENGTH__+0x7009b3>
+   2051e:	10 92 b3 09 	sts	0x09B3, r1	; 0x8009b3 <__TEXT_REGION_LENGTH__+0x7009b3>
 	EIND = 0x00;
-   204b2:	1c be       	out	0x3c, r1	; 60
+   20522:	1c be       	out	0x3c, r1	; 60
 	gotozero();
-   204b4:	e0 e0       	ldi	r30, 0x00	; 0
-   204b6:	f0 e0       	ldi	r31, 0x00	; 0
-   204b8:	19 95       	eicall
-   204ba:	08 95       	ret
+   20524:	e0 e0       	ldi	r30, 0x00	; 0
+   20526:	f0 e0       	ldi	r31, 0x00	; 0
+   20528:	19 95       	eicall
+   2052a:	08 95       	ret
 
-000204bc <main>:
+0002052c <main>:
 }
 
  int main(void) 
 {   
-   204bc:	cf 93       	push	r28
-   204be:	df 93       	push	r29
-   204c0:	cd b7       	in	r28, 0x3d	; 61
-   204c2:	de b7       	in	r29, 0x3e	; 62
-   204c4:	28 97       	sbiw	r28, 0x08	; 8
-   204c6:	cd bf       	out	0x3d, r28	; 61
-   204c8:	de bf       	out	0x3e, r29	; 62
+   2052c:	cf 93       	push	r28
+   2052e:	df 93       	push	r29
+   20530:	cd b7       	in	r28, 0x3d	; 61
+   20532:	de b7       	in	r29, 0x3e	; 62
+   20534:	2c 97       	sbiw	r28, 0x0c	; 12
+   20536:	cd bf       	out	0x3d, r28	; 61
+   20538:	de bf       	out	0x3e, r29	; 62
 class CCpu
 {
      public:
      CCpu(){
 	 //----------------InitCPU
 	 OSC_CTRL = (1<<OSC_RC32MEN_bp);//разрешаем работу внутреннего тактового генератора 32MHz
-   204ca:	82 e0       	ldi	r24, 0x02	; 2
-   204cc:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
+   2053a:	82 e0       	ldi	r24, 0x02	; 2
+   2053c:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
 	 while(!(OSC_STATUS & (1<<OSC_RC32MRDY_bp))); // Ожидание готовности внутреннего тактового генератора 32MHz;
-   204d0:	e1 e5       	ldi	r30, 0x51	; 81
-   204d2:	f0 e0       	ldi	r31, 0x00	; 0
-   204d4:	80 81       	ld	r24, Z
-   204d6:	81 ff       	sbrs	r24, 1
-   204d8:	fd cf       	rjmp	.-6      	; 0x204d4 <main+0x18>
+   20540:	e1 e5       	ldi	r30, 0x51	; 81
+   20542:	f0 e0       	ldi	r31, 0x00	; 0
+   20544:	80 81       	ld	r24, Z
+   20546:	81 ff       	sbrs	r24, 1
+   20548:	fd cf       	rjmp	.-6      	; 0x20544 <main+0x18>
 	 CCP = 0xD8; //Разрешение записи в защищённый регистр
-   204da:	28 ed       	ldi	r18, 0xD8	; 216
-   204dc:	24 bf       	out	0x34, r18	; 52
+   2054a:	28 ed       	ldi	r18, 0xD8	; 216
+   2054c:	24 bf       	out	0x34, r18	; 52
 	 CLK_CTRL = 1;
-   204de:	91 e0       	ldi	r25, 0x01	; 1
-   204e0:	90 93 40 00 	sts	0x0040, r25	; 0x800040 <__TEXT_REGION_LENGTH__+0x700040>
+   2054e:	91 e0       	ldi	r25, 0x01	; 1
+   20550:	90 93 40 00 	sts	0x0040, r25	; 0x800040 <__TEXT_REGION_LENGTH__+0x700040>
 class CInterrupt
 {
     public:
 	CInterrupt(){}
 	CInterrupt(int usesection){
 	PMIC.CTRL |= PMIC_LOLVLEN_bm | PMIC_MEDLVLEN_bm | PMIC_HILVLEN_bm ;// активация контроллера прерываний 10 bytes PM
-   204e4:	e0 ea       	ldi	r30, 0xA0	; 160
-   204e6:	f0 e0       	ldi	r31, 0x00	; 0
-   204e8:	82 81       	ldd	r24, Z+2	; 0x02
-   204ea:	87 60       	ori	r24, 0x07	; 7
-   204ec:	82 83       	std	Z+2, r24	; 0x02
+   20554:	e0 ea       	ldi	r30, 0xA0	; 160
+   20556:	f0 e0       	ldi	r31, 0x00	; 0
+   20558:	82 81       	ldd	r24, Z+2	; 0x02
+   2055a:	87 60       	ori	r24, 0x07	; 7
+   2055c:	82 83       	std	Z+2, r24	; 0x02
 	if(usesection == Boot)
 	{
 	      CCP = CCP_IOREG_gc; //Разрешение записи в защищённый регистр
-   204ee:	24 bf       	out	0x34, r18	; 52
+   2055e:	24 bf       	out	0x34, r18	; 52
 	      PMIC.CTRL |= PMIC_IVSEL_bm;  // активация таблицы прерываний загрузочного сектора
-   204f0:	82 81       	ldd	r24, Z+2	; 0x02
-   204f2:	80 64       	ori	r24, 0x40	; 64
-   204f4:	82 83       	std	Z+2, r24	; 0x02
+   20560:	82 81       	ldd	r24, Z+2	; 0x02
+   20562:	80 64       	ori	r24, 0x40	; 64
+   20564:	82 83       	std	Z+2, r24	; 0x02
      int pin;
   public: 
       
 
        CPin(PORT_t *port,int pinnum,int direct){
 	   portn = port;
-   204f6:	e0 e2       	ldi	r30, 0x20	; 32
-   204f8:	f7 e0       	ldi	r31, 0x07	; 7
-   204fa:	e9 83       	std	Y+1, r30	; 0x01
-   204fc:	fa 83       	std	Y+2, r31	; 0x02
+   20566:	e0 e2       	ldi	r30, 0x20	; 32
+   20568:	f7 e0       	ldi	r31, 0x07	; 7
+   2056a:	e9 83       	std	Y+1, r30	; 0x01
+   2056c:	fa 83       	std	Y+2, r31	; 0x02
 	   pin = pinnum;
-   204fe:	21 e0       	ldi	r18, 0x01	; 1
-   20500:	30 e0       	ldi	r19, 0x00	; 0
-   20502:	2b 83       	std	Y+3, r18	; 0x03
-   20504:	3c 83       	std	Y+4, r19	; 0x04
+   2056e:	21 e0       	ldi	r18, 0x01	; 1
+   20570:	30 e0       	ldi	r19, 0x00	; 0
+   20572:	2b 83       	std	Y+3, r18	; 0x03
+   20574:	3c 83       	std	Y+4, r19	; 0x04
 	   if(direct)
 	   port->DIRSET = pinnum;
-   20506:	91 83       	std	Z+1, r25	; 0x01
-   20508:	84 e0       	ldi	r24, 0x04	; 4
-   2050a:	81 83       	std	Z+1, r24	; 0x01
+   20576:	91 83       	std	Z+1, r25	; 0x01
      int pin;
   public: 
       
 
        CPin(PORT_t *port,int pinnum,int direct){
 	   portn = port;
-   2050c:	ed 83       	std	Y+5, r30	; 0x05
-   2050e:	fe 83       	std	Y+6, r31	; 0x06
+   20578:	a0 ec       	ldi	r26, 0xC0	; 192
+   2057a:	b7 e0       	ldi	r27, 0x07	; 7
+   2057c:	ad 83       	std	Y+5, r26	; 0x05
+   2057e:	be 83       	std	Y+6, r27	; 0x06
 	   pin = pinnum;
-   20510:	80 e2       	ldi	r24, 0x20	; 32
-   20512:	90 e0       	ldi	r25, 0x00	; 0
-   20514:	8f 83       	std	Y+7, r24	; 0x07
-   20516:	98 87       	std	Y+8, r25	; 0x08
+   20580:	84 e0       	ldi	r24, 0x04	; 4
+   20582:	90 e0       	ldi	r25, 0x00	; 0
+   20584:	8f 83       	std	Y+7, r24	; 0x07
+   20586:	98 87       	std	Y+8, r25	; 0x08
+	   if(direct)
+	   port->DIRSET = pinnum;
+   20588:	11 96       	adiw	r26, 0x01	; 1
+   2058a:	8c 93       	st	X, r24
+     int pin;
+  public: 
+      
+
+       CPin(PORT_t *port,int pinnum,int direct){
+	   portn = port;
+   2058c:	e9 87       	std	Y+9, r30	; 0x09
+   2058e:	fa 87       	std	Y+10, r31	; 0x0a
+	   pin = pinnum;
+   20590:	80 e2       	ldi	r24, 0x20	; 32
+   20592:	90 e0       	ldi	r25, 0x00	; 0
+   20594:	8b 87       	std	Y+11, r24	; 0x0b
+   20596:	9c 87       	std	Y+12, r25	; 0x0c
 	CSerial(int rate,int device)
 	{
 		if(device == microe793)
 		{
 			port = &USARTC0;//port C0 is used
 			if(rate == bdrate19200 || rate == bdrate200000){USARTC0_BAUDCTRLB = 0;USARTC0_BAUDCTRLA = rate;}
-   20518:	10 92 a7 08 	sts	0x08A7, r1	; 0x8008a7 <__TEXT_REGION_LENGTH__+0x7008a7>
-   2051c:	89 e0       	ldi	r24, 0x09	; 9
-   2051e:	80 93 a6 08 	sts	0x08A6, r24	; 0x8008a6 <__TEXT_REGION_LENGTH__+0x7008a6>
+   20598:	10 92 a7 08 	sts	0x08A7, r1	; 0x8008a7 <__TEXT_REGION_LENGTH__+0x7008a7>
+   2059c:	89 e0       	ldi	r24, 0x09	; 9
+   2059e:	80 93 a6 08 	sts	0x08A6, r24	; 0x8008a6 <__TEXT_REGION_LENGTH__+0x7008a6>
 			if(rate == bdrate115200){USARTC0_BAUDCTRLB = 208; USARTC0_BAUDCTRLA = rate;}
 			
 			USARTC0_CTRLA = USART_RXCINTLVL_MED_gc; //подключение прерываний
-   20522:	80 e2       	ldi	r24, 0x20	; 32
-   20524:	80 93 a3 08 	sts	0x08A3, r24	; 0x8008a3 <__TEXT_REGION_LENGTH__+0x7008a3>
+   205a2:	80 e2       	ldi	r24, 0x20	; 32
+   205a4:	80 93 a3 08 	sts	0x08A3, r24	; 0x8008a3 <__TEXT_REGION_LENGTH__+0x7008a3>
 			USARTC0_CTRLC = USART_CHSIZE_8BIT_gc; //8 data bits, no parity and 1 stop bit
-   20528:	83 e0       	ldi	r24, 0x03	; 3
-   2052a:	80 93 a5 08 	sts	0x08A5, r24	; 0x8008a5 <__TEXT_REGION_LENGTH__+0x7008a5>
+   205a8:	83 e0       	ldi	r24, 0x03	; 3
+   205aa:	80 93 a5 08 	sts	0x08A5, r24	; 0x8008a5 <__TEXT_REGION_LENGTH__+0x7008a5>
 			USARTC0_CTRLB = USART_TXEN_bm | USART_RXEN_bm; //Включение приема передатчика
-   2052e:	88 e1       	ldi	r24, 0x18	; 24
-   20530:	80 93 a4 08 	sts	0x08A4, r24	; 0x8008a4 <__TEXT_REGION_LENGTH__+0x7008a4>
+   205ae:	88 e1       	ldi	r24, 0x18	; 24
+   205b0:	80 93 a4 08 	sts	0x08A4, r24	; 0x8008a4 <__TEXT_REGION_LENGTH__+0x7008a4>
 			PORTC.DIRSET = PIN3_bm;  // настройка ноги 3 порта С контроллера Xmega на выход!для передачи данных в микросхему Uart
-   20534:	88 e0       	ldi	r24, 0x08	; 8
-   20536:	80 93 41 06 	sts	0x0641, r24	; 0x800641 <__TEXT_REGION_LENGTH__+0x700641>
+   205b4:	88 e0       	ldi	r24, 0x08	; 8
+   205b6:	80 93 41 06 	sts	0x0641, r24	; 0x800641 <__TEXT_REGION_LENGTH__+0x700641>
 
 public:
     CTwi(){}
 	CTwi(int speed){
 	//----------------InitTWI
 	TWIC.CTRL = 0;
-   2053a:	10 92 80 04 	sts	0x0480, r1	; 0x800480 <__TEXT_REGION_LENGTH__+0x700480>
+   205ba:	10 92 80 04 	sts	0x0480, r1	; 0x800480 <__TEXT_REGION_LENGTH__+0x700480>
 	TWIC_MASTER_BAUD=speed;// При 32 Мгц, на 100кГц = 155(0x9B)
-   2053e:	9b e9       	ldi	r25, 0x9B	; 155
-   20540:	90 93 85 04 	sts	0x0485, r25	; 0x800485 <__TEXT_REGION_LENGTH__+0x700485>
+   205be:	9b e9       	ldi	r25, 0x9B	; 155
+   205c0:	90 93 85 04 	sts	0x0485, r25	; 0x800485 <__TEXT_REGION_LENGTH__+0x700485>
 	TWIC_MASTER_CTRLA=TWI_MASTER_ENABLE_bm; //enable master
-   20544:	80 93 81 04 	sts	0x0481, r24	; 0x800481 <__TEXT_REGION_LENGTH__+0x700481>
+   205c4:	80 93 81 04 	sts	0x0481, r24	; 0x800481 <__TEXT_REGION_LENGTH__+0x700481>
 	TWIC_MASTER_CTRLB=0x00; //disable Inactive Bus Timeout, disable QCEN and SMEN
-   20548:	10 92 82 04 	sts	0x0482, r1	; 0x800482 <__TEXT_REGION_LENGTH__+0x700482>
+   205c8:	10 92 82 04 	sts	0x0482, r1	; 0x800482 <__TEXT_REGION_LENGTH__+0x700482>
 	TWIC_MASTER_CTRLC=0x00; //send ACK and NOACT initially
-   2054c:	10 92 83 04 	sts	0x0483, r1	; 0x800483 <__TEXT_REGION_LENGTH__+0x700483>
+   205cc:	10 92 83 04 	sts	0x0483, r1	; 0x800483 <__TEXT_REGION_LENGTH__+0x700483>
 	TWIC_MASTER_STATUS=TWI_MASTER_RIF_bm|TWI_MASTER_WIF_bm|TWI_MASTER_ARBLOST_bm|TWI_MASTER_BUSERR_bm|TWI_MASTER_BUSSTATE0_bm; //initially clear all flags and select bus state as IDLE
-   20550:	8d ec       	ldi	r24, 0xCD	; 205
-   20552:	80 93 84 04 	sts	0x0484, r24	; 0x800484 <__TEXT_REGION_LENGTH__+0x700484>
-}
-
-void CPin::PullDown(int numPin)
-{
-    if(numPin == 5)
-    portn->PIN5CTRL = PORT_OPC_PULLDOWN_gc;
-   20556:	ed 81       	ldd	r30, Y+5	; 0x05
-   20558:	fe 81       	ldd	r31, Y+6	; 0x06
-   2055a:	80 e1       	ldi	r24, 0x10	; 16
-   2055c:	85 8b       	std	Z+21, r24	; 0x15
+   205d0:	8d ec       	ldi	r24, 0xCD	; 205
+   205d2:	80 93 84 04 	sts	0x0484, r24	; 0x800484 <__TEXT_REGION_LENGTH__+0x700484>
+   CSerial       InitUart(bdrate200000,microe793);
+   //CSerial       InitUart(bdrate200000,lir540);
+   CTwi          InitTwi(Twi100Khz);
+ 
+   
+   pin5portK.PullDown();
+   205d6:	ce 01       	movw	r24, r28
+   205d8:	09 96       	adiw	r24, 0x09	; 9
+   205da:	0f 94 41 02 	call	0x20482	; 0x20482 <_ZN4CPin8PullDownEv>
 	void disable();
 };
 
 void CInterrupt::enable()
 {
      sei();
-   2055e:	78 94       	sei
+   205de:	78 94       	sei
              
    inter.enable();
    
     while (1) 
     { 	 
 	   pin0portK.shim10n100();
-   20560:	ce 01       	movw	r24, r28
-   20562:	01 96       	adiw	r24, 0x01	; 1
-   20564:	0f 94 2b 02 	call	0x20456	; 0x20456 <_ZN4CPin10shim10n100Ev>
-	   //pin2portK.shim10n100();
+   205e0:	ce 01       	movw	r24, r28
+   205e2:	01 96       	adiw	r24, 0x01	; 1
+   205e4:	0f 94 2b 02 	call	0x20456	; 0x20456 <_ZN4CPin10shim10n100Ev>
+	   
 
 	    if(pin5portK.OnPin()) // || Onboot
-   20568:	ce 01       	movw	r24, r28
-   2056a:	05 96       	adiw	r24, 0x05	; 5
-   2056c:	0f 94 41 02 	call	0x20482	; 0x20482 <_ZN4CPin5OnPinEv>
+   205e8:	ce 01       	movw	r24, r28
+   205ea:	09 96       	adiw	r24, 0x09	; 9
+   205ec:	0f 94 79 02 	call	0x204f2	; 0x204f2 <_ZN4CPin5OnPinEv>
 	    {
 		    Onboot = true;					
 	    }
 	    if(!pin5portK.OnPin() || end_of_flashing)
-   20570:	ce 01       	movw	r24, r28
-   20572:	05 96       	adiw	r24, 0x05	; 5
-   20574:	0f 94 41 02 	call	0x20482	; 0x20482 <_ZN4CPin5OnPinEv>
-   20578:	88 23       	and	r24, r24
-   2057a:	21 f0       	breq	.+8      	; 0x20584 <main+0xc8>
-   2057c:	80 91 00 20 	lds	r24, 0x2000	; 0x802000 <_edata>
-   20580:	88 23       	and	r24, r24
-   20582:	71 f3       	breq	.-36     	; 0x20560 <main+0xa4>
+   205f0:	ce 01       	movw	r24, r28
+   205f2:	09 96       	adiw	r24, 0x09	; 9
+   205f4:	0f 94 79 02 	call	0x204f2	; 0x204f2 <_ZN4CPin5OnPinEv>
+   205f8:	88 23       	and	r24, r24
+   205fa:	21 f0       	breq	.+8      	; 0x20604 <main+0xd8>
+   205fc:	80 91 00 20 	lds	r24, 0x2000	; 0x802000 <_edata>
+   20600:	88 23       	and	r24, r24
+   20602:	71 f3       	breq	.-36     	; 0x205e0 <main+0xb4>
 }
 
 
 void CPin::outclr()
 {
     portn->OUTCLR = pin; 
-   20584:	e9 81       	ldd	r30, Y+1	; 0x01
-   20586:	fa 81       	ldd	r31, Y+2	; 0x02
-   20588:	8b 81       	ldd	r24, Y+3	; 0x03
-   2058a:	86 83       	std	Z+6, r24	; 0x06
+   20604:	e9 81       	ldd	r30, Y+1	; 0x01
+   20606:	fa 81       	ldd	r31, Y+2	; 0x02
+   20608:	8b 81       	ldd	r24, Y+3	; 0x03
+   2060a:	86 83       	std	Z+6, r24	; 0x06
 	    {
 		    pin0portK.outclr();
+			pin2portQ.shim10n100();
+   2060c:	ce 01       	movw	r24, r28
+   2060e:	05 96       	adiw	r24, 0x05	; 5
+   20610:	0f 94 2b 02 	call	0x20456	; 0x20456 <_ZN4CPin10shim10n100Ev>
 		    exitboot();
-   2058c:	0f 94 52 02 	call	0x204a4	; 0x204a4 <_Z8exitbootv>
-   20590:	e7 cf       	rjmp	.-50     	; 0x20560 <main+0xa4>
+   20614:	0f 94 8a 02 	call	0x20514	; 0x20514 <_Z8exitbootv>
+   20618:	e3 cf       	rjmp	.-58     	; 0x205e0 <main+0xb4>
 
-00020592 <__vector_25>:
+0002061a <__vector_25>:
 	    }
     }
 }
 
 ISR(USARTC0_RXC_vect)
 {
-   20592:	1f 92       	push	r1
-   20594:	0f 92       	push	r0
-   20596:	0f b6       	in	r0, 0x3f	; 63
-   20598:	0f 92       	push	r0
-   2059a:	11 24       	eor	r1, r1
-   2059c:	08 b6       	in	r0, 0x38	; 56
-   2059e:	0f 92       	push	r0
-   205a0:	18 be       	out	0x38, r1	; 56
-   205a2:	09 b6       	in	r0, 0x39	; 57
-   205a4:	0f 92       	push	r0
-   205a6:	19 be       	out	0x39, r1	; 57
-   205a8:	0a b6       	in	r0, 0x3a	; 58
-   205aa:	0f 92       	push	r0
-   205ac:	1a be       	out	0x3a, r1	; 58
-   205ae:	0b b6       	in	r0, 0x3b	; 59
-   205b0:	0f 92       	push	r0
-   205b2:	1b be       	out	0x3b, r1	; 59
-   205b4:	8f 92       	push	r8
-   205b6:	9f 92       	push	r9
-   205b8:	af 92       	push	r10
-   205ba:	bf 92       	push	r11
-   205bc:	cf 92       	push	r12
-   205be:	df 92       	push	r13
-   205c0:	ef 92       	push	r14
-   205c2:	ff 92       	push	r15
-   205c4:	0f 93       	push	r16
-   205c6:	1f 93       	push	r17
-   205c8:	2f 93       	push	r18
-   205ca:	3f 93       	push	r19
-   205cc:	4f 93       	push	r20
-   205ce:	5f 93       	push	r21
-   205d0:	6f 93       	push	r22
-   205d2:	7f 93       	push	r23
-   205d4:	8f 93       	push	r24
-   205d6:	9f 93       	push	r25
-   205d8:	af 93       	push	r26
-   205da:	bf 93       	push	r27
-   205dc:	ef 93       	push	r30
-   205de:	ff 93       	push	r31
-   205e0:	cf 93       	push	r28
-   205e2:	df 93       	push	r29
-   205e4:	cd b7       	in	r28, 0x3d	; 61
-   205e6:	de b7       	in	r29, 0x3e	; 62
-   205e8:	c2 5c       	subi	r28, 0xC2	; 194
-   205ea:	d2 40       	sbci	r29, 0x02	; 2
-   205ec:	cd bf       	out	0x3d, r28	; 61
-   205ee:	de bf       	out	0x3e, r29	; 62
+   2061a:	1f 92       	push	r1
+   2061c:	0f 92       	push	r0
+   2061e:	0f b6       	in	r0, 0x3f	; 63
+   20620:	0f 92       	push	r0
+   20622:	11 24       	eor	r1, r1
+   20624:	08 b6       	in	r0, 0x38	; 56
+   20626:	0f 92       	push	r0
+   20628:	18 be       	out	0x38, r1	; 56
+   2062a:	09 b6       	in	r0, 0x39	; 57
+   2062c:	0f 92       	push	r0
+   2062e:	19 be       	out	0x39, r1	; 57
+   20630:	0a b6       	in	r0, 0x3a	; 58
+   20632:	0f 92       	push	r0
+   20634:	1a be       	out	0x3a, r1	; 58
+   20636:	0b b6       	in	r0, 0x3b	; 59
+   20638:	0f 92       	push	r0
+   2063a:	1b be       	out	0x3b, r1	; 59
+   2063c:	8f 92       	push	r8
+   2063e:	9f 92       	push	r9
+   20640:	af 92       	push	r10
+   20642:	bf 92       	push	r11
+   20644:	cf 92       	push	r12
+   20646:	df 92       	push	r13
+   20648:	ef 92       	push	r14
+   2064a:	ff 92       	push	r15
+   2064c:	0f 93       	push	r16
+   2064e:	1f 93       	push	r17
+   20650:	2f 93       	push	r18
+   20652:	3f 93       	push	r19
+   20654:	4f 93       	push	r20
+   20656:	5f 93       	push	r21
+   20658:	6f 93       	push	r22
+   2065a:	7f 93       	push	r23
+   2065c:	8f 93       	push	r24
+   2065e:	9f 93       	push	r25
+   20660:	af 93       	push	r26
+   20662:	bf 93       	push	r27
+   20664:	ef 93       	push	r30
+   20666:	ff 93       	push	r31
+   20668:	cf 93       	push	r28
+   2066a:	df 93       	push	r29
+   2066c:	cd b7       	in	r28, 0x3d	; 61
+   2066e:	de b7       	in	r29, 0x3e	; 62
+   20670:	c2 5c       	subi	r28, 0xC2	; 194
+   20672:	d2 40       	sbci	r29, 0x02	; 2
+   20674:	cd bf       	out	0x3d, r28	; 61
+   20676:	de bf       	out	0x3e, r29	; 62
 	USART_t * port;
 	public:
 	CSerial(){}
 	CSerial(USART_t * port_t)
 	{
 		port = port_t;
-   205f0:	80 ea       	ldi	r24, 0xA0	; 160
-   205f2:	98 e0       	ldi	r25, 0x08	; 8
-   205f4:	89 83       	std	Y+1, r24	; 0x01
-   205f6:	9a 83       	std	Y+2, r25	; 0x02
+   20678:	80 ea       	ldi	r24, 0xA0	; 160
+   2067a:	98 e0       	ldi	r25, 0x08	; 8
+   2067c:	89 83       	std	Y+1, r24	; 0x01
+   2067e:	9a 83       	std	Y+2, r25	; 0x02
 
 	CSerial       uart(&USARTC0);
 	CTwi          twi;
 	
 	unsigned char block[700] = { 0 };
-   205f8:	be 01       	movw	r22, r28
-   205fa:	6d 5f       	subi	r22, 0xFD	; 253
-   205fc:	7f 4f       	sbci	r23, 0xFF	; 255
-   205fe:	8c eb       	ldi	r24, 0xBC	; 188
-   20600:	92 e0       	ldi	r25, 0x02	; 2
-   20602:	fb 01       	movw	r30, r22
-   20604:	9c 01       	movw	r18, r24
-   20606:	11 92       	st	Z+, r1
-   20608:	21 50       	subi	r18, 0x01	; 1
-   2060a:	30 40       	sbci	r19, 0x00	; 0
-   2060c:	e1 f7       	brne	.-8      	; 0x20606 <__vector_25+0x74>
+   20680:	be 01       	movw	r22, r28
+   20682:	6d 5f       	subi	r22, 0xFD	; 253
+   20684:	7f 4f       	sbci	r23, 0xFF	; 255
+   20686:	8c eb       	ldi	r24, 0xBC	; 188
+   20688:	92 e0       	ldi	r25, 0x02	; 2
+   2068a:	fb 01       	movw	r30, r22
+   2068c:	9c 01       	movw	r18, r24
+   2068e:	11 92       	st	Z+, r1
+   20690:	21 50       	subi	r18, 0x01	; 1
+   20692:	30 40       	sbci	r19, 0x00	; 0
+   20694:	e1 f7       	brne	.-8      	; 0x2068e <__vector_25+0x74>
 	unsigned char answerFlash[] = { 0xff,0x02,0x04,0x0A };
-   2060e:	8f ef       	ldi	r24, 0xFF	; 255
-   20610:	c1 54       	subi	r28, 0x41	; 65
-   20612:	dd 4f       	sbci	r29, 0xFD	; 253
-   20614:	88 83       	st	Y, r24
-   20616:	cf 5b       	subi	r28, 0xBF	; 191
-   20618:	d2 40       	sbci	r29, 0x02	; 2
-   2061a:	82 e0       	ldi	r24, 0x02	; 2
-   2061c:	c0 54       	subi	r28, 0x40	; 64
-   2061e:	dd 4f       	sbci	r29, 0xFD	; 253
-   20620:	88 83       	st	Y, r24
-   20622:	c0 5c       	subi	r28, 0xC0	; 192
-   20624:	d2 40       	sbci	r29, 0x02	; 2
-   20626:	84 e0       	ldi	r24, 0x04	; 4
-   20628:	cf 53       	subi	r28, 0x3F	; 63
-   2062a:	dd 4f       	sbci	r29, 0xFD	; 253
-   2062c:	88 83       	st	Y, r24
-   2062e:	c1 5c       	subi	r28, 0xC1	; 193
-   20630:	d2 40       	sbci	r29, 0x02	; 2
-   20632:	8a e0       	ldi	r24, 0x0A	; 10
-   20634:	ce 53       	subi	r28, 0x3E	; 62
-   20636:	dd 4f       	sbci	r29, 0xFD	; 253
-   20638:	88 83       	st	Y, r24
-   2063a:	c2 5c       	subi	r28, 0xC2	; 194
-   2063c:	d2 40       	sbci	r29, 0x02	; 2
+   20696:	8f ef       	ldi	r24, 0xFF	; 255
+   20698:	c1 54       	subi	r28, 0x41	; 65
+   2069a:	dd 4f       	sbci	r29, 0xFD	; 253
+   2069c:	88 83       	st	Y, r24
+   2069e:	cf 5b       	subi	r28, 0xBF	; 191
+   206a0:	d2 40       	sbci	r29, 0x02	; 2
+   206a2:	82 e0       	ldi	r24, 0x02	; 2
+   206a4:	c0 54       	subi	r28, 0x40	; 64
+   206a6:	dd 4f       	sbci	r29, 0xFD	; 253
+   206a8:	88 83       	st	Y, r24
+   206aa:	c0 5c       	subi	r28, 0xC0	; 192
+   206ac:	d2 40       	sbci	r29, 0x02	; 2
+   206ae:	84 e0       	ldi	r24, 0x04	; 4
+   206b0:	cf 53       	subi	r28, 0x3F	; 63
+   206b2:	dd 4f       	sbci	r29, 0xFD	; 253
+   206b4:	88 83       	st	Y, r24
+   206b6:	c1 5c       	subi	r28, 0xC1	; 193
+   206b8:	d2 40       	sbci	r29, 0x02	; 2
+   206ba:	8a e0       	ldi	r24, 0x0A	; 10
+   206bc:	ce 53       	subi	r28, 0x3E	; 62
+   206be:	dd 4f       	sbci	r29, 0xFD	; 253
+   206c0:	88 83       	st	Y, r24
+   206c2:	c2 5c       	subi	r28, 0xC2	; 194
+   206c4:	d2 40       	sbci	r29, 0x02	; 2
 
 	uart.Recievedblock(block,sizeof(block));
-   2063e:	4c eb       	ldi	r20, 0xBC	; 188
-   20640:	52 e0       	ldi	r21, 0x02	; 2
-   20642:	ce 01       	movw	r24, r28
-   20644:	01 96       	adiw	r24, 0x01	; 1
-   20646:	0f 94 a9 01 	call	0x20352	; 0x20352 <_ZN7CSerial13RecievedblockEPhi>
+   206c6:	4c eb       	ldi	r20, 0xBC	; 188
+   206c8:	52 e0       	ldi	r21, 0x02	; 2
+   206ca:	ce 01       	movw	r24, r28
+   206cc:	01 96       	adiw	r24, 0x01	; 1
+   206ce:	0f 94 a9 01 	call	0x20352	; 0x20352 <_ZN7CSerial13RecievedblockEPhi>
 	
 	if ( block[3] == WRITE_ || block[3] == 0x83)
-   2064a:	8e 81       	ldd	r24, Y+6	; 0x06
-   2064c:	83 30       	cpi	r24, 0x03	; 3
-   2064e:	61 f0       	breq	.+24     	; 0x20668 <__vector_25+0xd6>
-   20650:	83 38       	cpi	r24, 0x83	; 131
-   20652:	c1 f5       	brne	.+112    	; 0x206c4 <__vector_25+0x132>
+   206d2:	8e 81       	ldd	r24, Y+6	; 0x06
+   206d4:	83 30       	cpi	r24, 0x03	; 3
+   206d6:	61 f0       	breq	.+24     	; 0x206f0 <__vector_25+0xd6>
+   206d8:	83 38       	cpi	r24, 0x83	; 131
+   206da:	c1 f5       	brne	.+112    	; 0x2074c <__vector_25+0x132>
 	{
 		unsigned long addres_page;
 
 		if(block[3] == 0x83)
 			addres_page = 255 + (int)block[6];
-   20654:	89 84       	ldd	r8, Y+9	; 0x09
-   20656:	91 2c       	mov	r9, r1
-   20658:	3f ef       	ldi	r19, 0xFF	; 255
-   2065a:	83 0e       	add	r8, r19
-   2065c:	91 1c       	adc	r9, r1
-   2065e:	09 2c       	mov	r0, r9
-   20660:	00 0c       	add	r0, r0
-   20662:	aa 08       	sbc	r10, r10
-   20664:	bb 08       	sbc	r11, r11
-   20666:	53 c0       	rjmp	.+166    	; 0x2070e <__vector_25+0x17c>
+   206dc:	89 84       	ldd	r8, Y+9	; 0x09
+   206de:	91 2c       	mov	r9, r1
+   206e0:	3f ef       	ldi	r19, 0xFF	; 255
+   206e2:	83 0e       	add	r8, r19
+   206e4:	91 1c       	adc	r9, r1
+   206e6:	09 2c       	mov	r0, r9
+   206e8:	00 0c       	add	r0, r0
+   206ea:	aa 08       	sbc	r10, r10
+   206ec:	bb 08       	sbc	r11, r11
+   206ee:	53 c0       	rjmp	.+166    	; 0x20796 <__vector_25+0x17c>
 		else
 			addres_page = (int)block[6] - 1;
-   20668:	89 84       	ldd	r8, Y+9	; 0x09
-   2066a:	91 2c       	mov	r9, r1
-   2066c:	81 e0       	ldi	r24, 0x01	; 1
-   2066e:	88 1a       	sub	r8, r24
-   20670:	91 08       	sbc	r9, r1
-   20672:	09 2c       	mov	r0, r9
-   20674:	00 0c       	add	r0, r0
-   20676:	aa 08       	sbc	r10, r10
-   20678:	bb 08       	sbc	r11, r11
-   2067a:	49 c0       	rjmp	.+146    	; 0x2070e <__vector_25+0x17c>
+   206f0:	89 84       	ldd	r8, Y+9	; 0x09
+   206f2:	91 2c       	mov	r9, r1
+   206f4:	81 e0       	ldi	r24, 0x01	; 1
+   206f6:	88 1a       	sub	r8, r24
+   206f8:	91 08       	sbc	r9, r1
+   206fa:	09 2c       	mov	r0, r9
+   206fc:	00 0c       	add	r0, r0
+   206fe:	aa 08       	sbc	r10, r10
+   20700:	bb 08       	sbc	r11, r11
+   20702:	49 c0       	rjmp	.+146    	; 0x20796 <__vector_25+0x17c>
 			return;
 		
 		for(int x=0;x<APP_SECTION_PAGE_SIZE;x+=2)
 		{
 			uint16_t word;
 			word = (uint8_t) block[x + 8];          //low
-   2067c:	f6 01       	movw	r30, r12
-   2067e:	00 81       	ld	r16, Z
+   20704:	f6 01       	movw	r30, r12
+   20706:	00 81       	ld	r16, Z
 			word |= (uint8_t) block[x + 9]<<8;      //hi
-   20680:	81 81       	ldd	r24, Z+1	; 0x01
-   20682:	10 e0       	ldi	r17, 0x00	; 0
-   20684:	18 2b       	or	r17, r24
+   20708:	81 81       	ldd	r24, Z+1	; 0x01
+   2070a:	10 e0       	ldi	r17, 0x00	; 0
+   2070c:	18 2b       	or	r17, r24
 			SP_WaitForSPM();
-   20686:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
+   2070e:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
 			SP_LoadFlashWord(x, word);
-   2068a:	b8 01       	movw	r22, r16
-   2068c:	c7 01       	movw	r24, r14
-   2068e:	0f 94 49 01 	call	0x20292	; 0x20292 <SP_LoadFlashWord>
+   20712:	b8 01       	movw	r22, r16
+   20714:	c7 01       	movw	r24, r14
+   20716:	0f 94 49 01 	call	0x20292	; 0x20292 <SP_LoadFlashWord>
 		addres_page = addres_page * 512;
 
 		if(addres_page >= APP_END)
 			return;
 		
 		for(int x=0;x<APP_SECTION_PAGE_SIZE;x+=2)
-   20692:	f2 e0       	ldi	r31, 0x02	; 2
-   20694:	ef 0e       	add	r14, r31
-   20696:	f1 1c       	adc	r15, r1
-   20698:	22 e0       	ldi	r18, 0x02	; 2
-   2069a:	c2 0e       	add	r12, r18
-   2069c:	d1 1c       	adc	r13, r1
-   2069e:	e1 14       	cp	r14, r1
-   206a0:	32 e0       	ldi	r19, 0x02	; 2
-   206a2:	f3 06       	cpc	r15, r19
-   206a4:	59 f7       	brne	.-42     	; 0x2067c <__vector_25+0xea>
+   2071a:	f2 e0       	ldi	r31, 0x02	; 2
+   2071c:	ef 0e       	add	r14, r31
+   2071e:	f1 1c       	adc	r15, r1
+   20720:	22 e0       	ldi	r18, 0x02	; 2
+   20722:	c2 0e       	add	r12, r18
+   20724:	d1 1c       	adc	r13, r1
+   20726:	e1 14       	cp	r14, r1
+   20728:	32 e0       	ldi	r19, 0x02	; 2
+   2072a:	f3 06       	cpc	r15, r19
+   2072c:	59 f7       	brne	.-42     	; 0x20704 <__vector_25+0xea>
 			word = (uint8_t) block[x + 8];          //low
 			word |= (uint8_t) block[x + 9]<<8;      //hi
 			SP_WaitForSPM();
 			SP_LoadFlashWord(x, word);
 		}
 		SP_WaitForSPM();
-   206a6:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
+   2072e:	0f 94 8c 01 	call	0x20318	; 0x20318 <SP_WaitForSPM>
 		SP_EraseWriteApplicationPage(addres_page);
-   206aa:	c5 01       	movw	r24, r10
-   206ac:	b4 01       	movw	r22, r8
-   206ae:	0f 94 65 01 	call	0x202ca	; 0x202ca <SP_EraseWriteApplicationPage>
+   20732:	c5 01       	movw	r24, r10
+   20734:	b4 01       	movw	r22, r8
+   20736:	0f 94 65 01 	call	0x202ca	; 0x202ca <SP_EraseWriteApplicationPage>
 
 		uart.TransmitBlock(answerFlash,sizeof(answerFlash));
-   206b2:	44 e0       	ldi	r20, 0x04	; 4
-   206b4:	50 e0       	ldi	r21, 0x00	; 0
-   206b6:	be 01       	movw	r22, r28
-   206b8:	61 54       	subi	r22, 0x41	; 65
-   206ba:	7d 4f       	sbci	r23, 0xFD	; 253
-   206bc:	ce 01       	movw	r24, r28
-   206be:	01 96       	adiw	r24, 0x01	; 1
-   206c0:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
+   2073a:	44 e0       	ldi	r20, 0x04	; 4
+   2073c:	50 e0       	ldi	r21, 0x00	; 0
+   2073e:	be 01       	movw	r22, r28
+   20740:	61 54       	subi	r22, 0x41	; 65
+   20742:	7d 4f       	sbci	r23, 0xFD	; 253
+   20744:	ce 01       	movw	r24, r28
+   20746:	01 96       	adiw	r24, 0x01	; 1
+   20748:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
 	}
 
 
 	if ( block[3] == TEST_ && block[4] == TEST_ ){ uart.TransmitBlock(block,8); }
-   206c4:	8e 81       	ldd	r24, Y+6	; 0x06
-   206c6:	85 35       	cpi	r24, 0x55	; 85
-   206c8:	61 f4       	brne	.+24     	; 0x206e2 <__vector_25+0x150>
-   206ca:	8f 81       	ldd	r24, Y+7	; 0x07
-   206cc:	85 35       	cpi	r24, 0x55	; 85
-   206ce:	a9 f5       	brne	.+106    	; 0x2073a <__vector_25+0x1a8>
-   206d0:	48 e0       	ldi	r20, 0x08	; 8
-   206d2:	50 e0       	ldi	r21, 0x00	; 0
-   206d4:	be 01       	movw	r22, r28
-   206d6:	6d 5f       	subi	r22, 0xFD	; 253
-   206d8:	7f 4f       	sbci	r23, 0xFF	; 255
-   206da:	ce 01       	movw	r24, r28
-   206dc:	01 96       	adiw	r24, 0x01	; 1
-   206de:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
+   2074c:	8e 81       	ldd	r24, Y+6	; 0x06
+   2074e:	85 35       	cpi	r24, 0x55	; 85
+   20750:	61 f4       	brne	.+24     	; 0x2076a <__vector_25+0x150>
+   20752:	8f 81       	ldd	r24, Y+7	; 0x07
+   20754:	85 35       	cpi	r24, 0x55	; 85
+   20756:	a9 f5       	brne	.+106    	; 0x207c2 <__vector_25+0x1a8>
+   20758:	48 e0       	ldi	r20, 0x08	; 8
+   2075a:	50 e0       	ldi	r21, 0x00	; 0
+   2075c:	be 01       	movw	r22, r28
+   2075e:	6d 5f       	subi	r22, 0xFD	; 253
+   20760:	7f 4f       	sbci	r23, 0xFF	; 255
+   20762:	ce 01       	movw	r24, r28
+   20764:	01 96       	adiw	r24, 0x01	; 1
+   20766:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
 
 	if ( block[3] == SET_TIME && block[4] == SET_TIME) { uart.TransmitBlock(block,1); }
-   206e2:	8e 81       	ldd	r24, Y+6	; 0x06
-   206e4:	87 30       	cpi	r24, 0x07	; 7
-   206e6:	61 f4       	brne	.+24     	; 0x20700 <__vector_25+0x16e>
-   206e8:	8f 81       	ldd	r24, Y+7	; 0x07
-   206ea:	87 30       	cpi	r24, 0x07	; 7
-   206ec:	31 f5       	brne	.+76     	; 0x2073a <__vector_25+0x1a8>
-   206ee:	41 e0       	ldi	r20, 0x01	; 1
-   206f0:	50 e0       	ldi	r21, 0x00	; 0
-   206f2:	be 01       	movw	r22, r28
-   206f4:	6d 5f       	subi	r22, 0xFD	; 253
-   206f6:	7f 4f       	sbci	r23, 0xFF	; 255
-   206f8:	ce 01       	movw	r24, r28
-   206fa:	01 96       	adiw	r24, 0x01	; 1
-   206fc:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
+   2076a:	8e 81       	ldd	r24, Y+6	; 0x06
+   2076c:	87 30       	cpi	r24, 0x07	; 7
+   2076e:	61 f4       	brne	.+24     	; 0x20788 <__vector_25+0x16e>
+   20770:	8f 81       	ldd	r24, Y+7	; 0x07
+   20772:	87 30       	cpi	r24, 0x07	; 7
+   20774:	31 f5       	brne	.+76     	; 0x207c2 <__vector_25+0x1a8>
+   20776:	41 e0       	ldi	r20, 0x01	; 1
+   20778:	50 e0       	ldi	r21, 0x00	; 0
+   2077a:	be 01       	movw	r22, r28
+   2077c:	6d 5f       	subi	r22, 0xFD	; 253
+   2077e:	7f 4f       	sbci	r23, 0xFF	; 255
+   20780:	ce 01       	movw	r24, r28
+   20782:	01 96       	adiw	r24, 0x01	; 1
+   20784:	0f 94 cd 01 	call	0x2039a	; 0x2039a <_ZN7CSerial13TransmitBlockEPhi>
 
 	if ( block[3] == WRITE_CHECK_ONES){ end_of_flashing = true;}
-   20700:	8e 81       	ldd	r24, Y+6	; 0x06
-   20702:	8c 33       	cpi	r24, 0x3C	; 60
-   20704:	d1 f4       	brne	.+52     	; 0x2073a <__vector_25+0x1a8>
-   20706:	81 e0       	ldi	r24, 0x01	; 1
-   20708:	80 93 00 20 	sts	0x2000, r24	; 0x802000 <_edata>
-   2070c:	16 c0       	rjmp	.+44     	; 0x2073a <__vector_25+0x1a8>
+   20788:	8e 81       	ldd	r24, Y+6	; 0x06
+   2078a:	8c 33       	cpi	r24, 0x3C	; 60
+   2078c:	d1 f4       	brne	.+52     	; 0x207c2 <__vector_25+0x1a8>
+   2078e:	81 e0       	ldi	r24, 0x01	; 1
+   20790:	80 93 00 20 	sts	0x2000, r24	; 0x802000 <_edata>
+   20794:	16 c0       	rjmp	.+44     	; 0x207c2 <__vector_25+0x1a8>
 		if(block[3] == 0x83)
 			addres_page = 255 + (int)block[6];
 		else
 			addres_page = (int)block[6] - 1;
 
 		addres_page = addres_page * 512;
-   2070e:	07 2e       	mov	r0, r23
-   20710:	79 e0       	ldi	r23, 0x09	; 9
-   20712:	88 0c       	add	r8, r8
-   20714:	99 1c       	adc	r9, r9
-   20716:	aa 1c       	adc	r10, r10
-   20718:	bb 1c       	adc	r11, r11
-   2071a:	7a 95       	dec	r23
-   2071c:	d1 f7       	brne	.-12     	; 0x20712 <__vector_25+0x180>
-   2071e:	70 2d       	mov	r23, r0
+   20796:	07 2e       	mov	r0, r23
+   20798:	79 e0       	ldi	r23, 0x09	; 9
+   2079a:	88 0c       	add	r8, r8
+   2079c:	99 1c       	adc	r9, r9
+   2079e:	aa 1c       	adc	r10, r10
+   207a0:	bb 1c       	adc	r11, r11
+   207a2:	7a 95       	dec	r23
+   207a4:	d1 f7       	brne	.-12     	; 0x2079a <__vector_25+0x180>
+   207a6:	70 2d       	mov	r23, r0
 
 		if(addres_page >= APP_END)
-   20720:	81 14       	cp	r8, r1
-   20722:	91 04       	cpc	r9, r1
-   20724:	82 e0       	ldi	r24, 0x02	; 2
-   20726:	a8 06       	cpc	r10, r24
-   20728:	b1 04       	cpc	r11, r1
-   2072a:	38 f4       	brcc	.+14     	; 0x2073a <__vector_25+0x1a8>
-   2072c:	6e 01       	movw	r12, r28
-   2072e:	eb e0       	ldi	r30, 0x0B	; 11
-   20730:	ce 0e       	add	r12, r30
-   20732:	d1 1c       	adc	r13, r1
-   20734:	e1 2c       	mov	r14, r1
-   20736:	f1 2c       	mov	r15, r1
-   20738:	a1 cf       	rjmp	.-190    	; 0x2067c <__vector_25+0xea>
+   207a8:	81 14       	cp	r8, r1
+   207aa:	91 04       	cpc	r9, r1
+   207ac:	82 e0       	ldi	r24, 0x02	; 2
+   207ae:	a8 06       	cpc	r10, r24
+   207b0:	b1 04       	cpc	r11, r1
+   207b2:	38 f4       	brcc	.+14     	; 0x207c2 <__vector_25+0x1a8>
+   207b4:	6e 01       	movw	r12, r28
+   207b6:	eb e0       	ldi	r30, 0x0B	; 11
+   207b8:	ce 0e       	add	r12, r30
+   207ba:	d1 1c       	adc	r13, r1
+   207bc:	e1 2c       	mov	r14, r1
+   207be:	f1 2c       	mov	r15, r1
+   207c0:	a1 cf       	rjmp	.-190    	; 0x20704 <__vector_25+0xea>
 	if ( block[3] == SET_TIME && block[4] == SET_TIME) { uart.TransmitBlock(block,1); }
 
 	if ( block[3] == WRITE_CHECK_ONES){ end_of_flashing = true;}
 	
 	return;	
 }
-   2073a:	ce 53       	subi	r28, 0x3E	; 62
-   2073c:	dd 4f       	sbci	r29, 0xFD	; 253
-   2073e:	cd bf       	out	0x3d, r28	; 61
-   20740:	de bf       	out	0x3e, r29	; 62
-   20742:	df 91       	pop	r29
-   20744:	cf 91       	pop	r28
-   20746:	ff 91       	pop	r31
-   20748:	ef 91       	pop	r30
-   2074a:	bf 91       	pop	r27
-   2074c:	af 91       	pop	r26
-   2074e:	9f 91       	pop	r25
-   20750:	8f 91       	pop	r24
-   20752:	7f 91       	pop	r23
-   20754:	6f 91       	pop	r22
-   20756:	5f 91       	pop	r21
-   20758:	4f 91       	pop	r20
-   2075a:	3f 91       	pop	r19
-   2075c:	2f 91       	pop	r18
-   2075e:	1f 91       	pop	r17
-   20760:	0f 91       	pop	r16
-   20762:	ff 90       	pop	r15
-   20764:	ef 90       	pop	r14
-   20766:	df 90       	pop	r13
-   20768:	cf 90       	pop	r12
-   2076a:	bf 90       	pop	r11
-   2076c:	af 90       	pop	r10
-   2076e:	9f 90       	pop	r9
-   20770:	8f 90       	pop	r8
-   20772:	0f 90       	pop	r0
-   20774:	0b be       	out	0x3b, r0	; 59
-   20776:	0f 90       	pop	r0
-   20778:	0a be       	out	0x3a, r0	; 58
-   2077a:	0f 90       	pop	r0
-   2077c:	09 be       	out	0x39, r0	; 57
-   2077e:	0f 90       	pop	r0
-   20780:	08 be       	out	0x38, r0	; 56
-   20782:	0f 90       	pop	r0
-   20784:	0f be       	out	0x3f, r0	; 63
-   20786:	0f 90       	pop	r0
-   20788:	1f 90       	pop	r1
-   2078a:	18 95       	reti
+   207c2:	ce 53       	subi	r28, 0x3E	; 62
+   207c4:	dd 4f       	sbci	r29, 0xFD	; 253
+   207c6:	cd bf       	out	0x3d, r28	; 61
+   207c8:	de bf       	out	0x3e, r29	; 62
+   207ca:	df 91       	pop	r29
+   207cc:	cf 91       	pop	r28
+   207ce:	ff 91       	pop	r31
+   207d0:	ef 91       	pop	r30
+   207d2:	bf 91       	pop	r27
+   207d4:	af 91       	pop	r26
+   207d6:	9f 91       	pop	r25
+   207d8:	8f 91       	pop	r24
+   207da:	7f 91       	pop	r23
+   207dc:	6f 91       	pop	r22
+   207de:	5f 91       	pop	r21
+   207e0:	4f 91       	pop	r20
+   207e2:	3f 91       	pop	r19
+   207e4:	2f 91       	pop	r18
+   207e6:	1f 91       	pop	r17
+   207e8:	0f 91       	pop	r16
+   207ea:	ff 90       	pop	r15
+   207ec:	ef 90       	pop	r14
+   207ee:	df 90       	pop	r13
+   207f0:	cf 90       	pop	r12
+   207f2:	bf 90       	pop	r11
+   207f4:	af 90       	pop	r10
+   207f6:	9f 90       	pop	r9
+   207f8:	8f 90       	pop	r8
+   207fa:	0f 90       	pop	r0
+   207fc:	0b be       	out	0x3b, r0	; 59
+   207fe:	0f 90       	pop	r0
+   20800:	0a be       	out	0x3a, r0	; 58
+   20802:	0f 90       	pop	r0
+   20804:	09 be       	out	0x39, r0	; 57
+   20806:	0f 90       	pop	r0
+   20808:	08 be       	out	0x38, r0	; 56
+   2080a:	0f 90       	pop	r0
+   2080c:	0f be       	out	0x3f, r0	; 63
+   2080e:	0f 90       	pop	r0
+   20810:	1f 90       	pop	r1
+   20812:	18 95       	reti
 
-0002078c <_exit>:
-   2078c:	f8 94       	cli
+00020814 <_exit>:
+   20814:	f8 94       	cli
 
-0002078e <__stop_program>:
-   2078e:	ff cf       	rjmp	.-2      	; 0x2078e <__stop_program>
+00020816 <__stop_program>:
+   20816:	ff cf       	rjmp	.-2      	; 0x20816 <__stop_program>
 
 Disassembly of section .BOOT:
 
-00020790 <SP_LoadFlashPage>:
+00020818 <SP_LoadFlashPage>:
 		
 .section .BOOT, "ax"
 .global SP_LoadFlashPage
 
 SP_LoadFlashPage:
 	clr	ZL              ; Clear low byte of Z, to indicate start of page.
-   20790:	ee 27       	eor	r30, r30
+   20818:	ee 27       	eor	r30, r30
 	clr	ZH              ; Clear high byte of Z, to indicate start of page.
-   20792:	ff 27       	eor	r31, r31
+   2081a:	ff 27       	eor	r31, r31
 
 	out	RAMPX, r1       ; Clear RAMPX pointer.
-   20794:	19 be       	out	0x39, r1	; 57
+   2081c:	19 be       	out	0x39, r1	; 57
 	movw	XL, r24         ; Load X with data buffer address.
-   20796:	dc 01       	movw	r26, r24
+   2081e:	dc 01       	movw	r26, r24
 
 	ldi 	r20, NVM_CMD_LOAD_FLASH_BUFFER_gc  ; Prepare NVM command code in R20.
-   20798:	43 e2       	ldi	r20, 0x23	; 35
+   20820:	43 e2       	ldi	r20, 0x23	; 35
 	sts	NVM_CMD, r20                       ; Load it into NVM command register.
-   2079a:	40 93 ca 01 	sts	0x01CA, r20	; 0x8001ca <__TEXT_REGION_LENGTH__+0x7001ca>
+   20822:	40 93 ca 01 	sts	0x01CA, r20	; 0x8001ca <__TEXT_REGION_LENGTH__+0x7001ca>
 
 #if FLASH_PAGE_SIZE > 512
 	ldi	r22, ((FLASH_PAGE_SIZE/2) >> 8)
 #endif
 
 	ldi	r21, ((FLASH_PAGE_SIZE/2)&0xFF)    ; Load R21 with page word count.
-   2079e:	50 e0       	ldi	r21, 0x00	; 0
+   20826:	50 e0       	ldi	r21, 0x00	; 0
 	ldi	r18, CCP_SPM_gc                    ; Prepare Protect SPM signature in R16.
-   207a0:	2d e9       	ldi	r18, 0x9D	; 157
+   20828:	2d e9       	ldi	r18, 0x9D	; 157
 
-000207a2 <SP_LoadFlashPage_1>:
+0002082a <SP_LoadFlashPage_1>:
 
 SP_LoadFlashPage_1:
 	ld	r0, X+         ; Load low byte from buffer into R0.
-   207a2:	0d 90       	ld	r0, X+
+   2082a:	0d 90       	ld	r0, X+
 	ld	r1, X+         ; Load high byte from buffer into R1.
-   207a4:	1d 90       	ld	r1, X+
+   2082c:	1d 90       	ld	r1, X+
 	sts	CCP, r18       ; Enable SPM operation (this disables interrupts for 4 cycles).
-   207a6:	20 93 34 00 	sts	0x0034, r18	; 0x800034 <__TEXT_REGION_LENGTH__+0x700034>
+   2082e:	20 93 34 00 	sts	0x0034, r18	; 0x800034 <__TEXT_REGION_LENGTH__+0x700034>
 	spm                    ; Self-program.
-   207aa:	e8 95       	spm
+   20832:	e8 95       	spm
 	adiw	ZL, 2          ; Move Z to next Flash word.
-   207ac:	32 96       	adiw	r30, 0x02	; 2
+   20834:	32 96       	adiw	r30, 0x02	; 2
 
 #if FLASH_PAGE_SIZE > 512
 	subi	r21, 1         ; Decrement word count.
 	sbci	r22, 0
 #else
 	dec	r21            ; Decrement word count.
-   207ae:	5a 95       	dec	r21
+   20836:	5a 95       	dec	r21
 #endif
 
 	brne	SP_LoadFlashPage_1   ; Repeat until word cont is zero.
-   207b0:	c1 f7       	brne	.-16     	; 0x207a2 <SP_LoadFlashPage_1>
+   20838:	c1 f7       	brne	.-16     	; 0x2082a <SP_LoadFlashPage_1>
 
 	clr	r1                   ; Clear R1 for GCC _zero_reg_ to function properly.
-   207b2:	11 24       	eor	r1, r1
+   2083a:	11 24       	eor	r1, r1
 	ret
-   207b4:	08 95       	ret
+   2083c:	08 95       	ret
 
-000207b6 <SP_CommonSPM>:
+0002083e <SP_CommonSPM>:
 ; ---
 
 .section .BOOT, "ax"
 
 SP_CommonSPM:
 	movw	ZL, r24          ; Load R25:R24 into Z.
-   207b6:	fc 01       	movw	r30, r24
+   2083e:	fc 01       	movw	r30, r24
 	sts	NVM_CMD, r20     ; Load prepared command into NVM Command register.
-   207b8:	40 93 ca 01 	sts	0x01CA, r20	; 0x8001ca <__TEXT_REGION_LENGTH__+0x7001ca>
+   20840:	40 93 ca 01 	sts	0x01CA, r20	; 0x8001ca <__TEXT_REGION_LENGTH__+0x7001ca>
 	ldi	r18, CCP_SPM_gc  ; Prepare Protect SPM signature in R18
-   207bc:	2d e9       	ldi	r18, 0x9D	; 157
+   20844:	2d e9       	ldi	r18, 0x9D	; 157
 	sts	CCP, r18         ; Enable SPM operation (this disables interrupts for 4 cycles).
-   207be:	20 93 34 00 	sts	0x0034, r18	; 0x800034 <__TEXT_REGION_LENGTH__+0x700034>
+   20846:	20 93 34 00 	sts	0x0034, r18	; 0x800034 <__TEXT_REGION_LENGTH__+0x700034>
 	spm                      ; Self-program.
-   207c2:	e8 95       	spm
+   2084a:	e8 95       	spm
 	clr	r1               ; Clear R1 for GCC _zero_reg_ to function properly.
-   207c4:	11 24       	eor	r1, r1
+   2084c:	11 24       	eor	r1, r1
 	out	RAMPZ, r19       ; Restore RAMPZ register.
-   207c6:	3b bf       	out	0x3b, r19	; 59
+   2084e:	3b bf       	out	0x3b, r19	; 59
 	ret
-   207c8:	08 95       	ret
+   20850:	08 95       	ret

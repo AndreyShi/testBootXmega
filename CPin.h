@@ -28,7 +28,7 @@ protected:
 	   void outset();
 	   void outclr();
 	   void shim10n100();
-	   void PullDown(int numPin);
+	   void PullDown();
 	   bool OnPin();                       // 80 bytes PM
 };
 
@@ -53,11 +53,14 @@ void CPin::shim10n100()
 	_delay_us(100);
 }
 
-void CPin::PullDown(int numPin)
+void CPin::PullDown()
 {
-    if(numPin == 5)
-    portn->PIN5CTRL = PORT_OPC_PULLDOWN_gc;
-	
+    if(pin == 0)portn->PIN0CTRL = PORT_OPC_PULLDOWN_gc;
+	if(pin == 1)portn->PIN1CTRL = PORT_OPC_PULLDOWN_gc;
+	if(pin == 2)portn->PIN2CTRL = PORT_OPC_PULLDOWN_gc;
+	if(pin == 3)portn->PIN3CTRL = PORT_OPC_PULLDOWN_gc;
+	if(pin == 4)portn->PIN4CTRL = PORT_OPC_PULLDOWN_gc;
+	if(pin == 5)portn->PIN5CTRL = PORT_OPC_PULLDOWN_gc;	
 }
 
 bool CPin::OnPin()

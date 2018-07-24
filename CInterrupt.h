@@ -22,6 +22,11 @@ class CInterrupt
 	      CCP = CCP_IOREG_gc; //–азрешение записи в защищЄнный регистр
 	      PMIC.CTRL |= PMIC_IVSEL_bm;  // активаци€ таблицы прерываний загрузочного сектора
 	}
+	if(usesection == App)
+	{
+		CCP = CCP_IOREG_gc; //–азрешение записи в защищЄнный регистр
+		PMIC.CTRL &= ~PMIC_IVSEL_bm;  // активаци€ таблицы прерываний загрузочного сектора
+	}
 	}
 	~CInterrupt(){}
 
