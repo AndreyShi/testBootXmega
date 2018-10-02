@@ -20,7 +20,7 @@ protected:
        CPin(PORT_t *port,int pinnum,int direct){
 	   portn = port;
 	   pin = pinnum;
-	   if(direct)
+	   if(direct == pin_out)
 	   port->DIRSET = pinnum;
 	   }
        ~CPin(){}

@@ -16,7 +16,8 @@
 #include "CPin.h"
 #include "CInterrupt.h"
 #include "CCpu.h"
-#include "CTwi.h"  
+#include "CTwi.h"
+#include "CRtc.h"  
 #include "enum.h"
 #include "sp_driver.h"
     
@@ -49,6 +50,7 @@ void exitboot(){
    CSerial       InitUart(bdrate200000,microe793);
    //CSerial       InitUart(bdrate200000,lir540);
    CTwi          InitTwi(Twi100Khz);
+   //CRtc          rtc(793);
  
    
    pin5portK.PullDown();
@@ -73,6 +75,18 @@ void exitboot(){
 		    exitboot();
 	    }
     }
+}
+
+ISR(RTC_OVF_vect)
+{
+	CPin  pin2portK(&PORTK,PIN2_bm,pin_out);
+
+	pin2portK.outset();
+	_delay_us(70);
+
+	pin2portK.outclr();
+	//_delay_ms(5);
+	
 }
 
 ISR(USARTC0_RXC_vect)

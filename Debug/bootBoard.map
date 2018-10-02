@@ -201,7 +201,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00020000      0x818
+.text           0x00020000      0x876
  *(.vectors)
  .vectors       0x00020000      0x1f4 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
                 0x00020000                __vector_default
@@ -371,7 +371,6 @@ END GROUP
                 0x00020224                __vector_84
                 0x00020224                __vector_57
                 0x00020224                __vector_53
-                0x00020224                __vector_10
                 0x00020224                __vector_50
                 0x00020224                __vector_16
                 0x00020224                __vector_59
@@ -434,14 +433,17 @@ END GROUP
                 0x00020514                _Z8exitbootv
  .text.main     0x0002052c       0xee bootboard.o
                 0x0002052c                main
+ .text.__vector_10
+                0x0002061a       0x5e bootboard.o
+                0x0002061a                __vector_10
  .text.__vector_25
-                0x0002061a      0x1fa bootboard.o
-                0x0002061a                __vector_25
-                0x00020814                . = ALIGN (0x2)
+                0x00020678      0x1fa bootboard.o
+                0x00020678                __vector_25
+                0x00020872                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00020814        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
-                0x00020814                _exit
-                0x00020814                exit
+ .fini9         0x00020872        0x0 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+                0x00020872                _exit
+                0x00020872                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -460,15 +462,15 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00020814        0x4 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
+ .fini0         0x00020872        0x4 e:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega7\libgcc.a(_exit.o)
  *(.fini0)
-                0x00020818                _etext = .
+                0x00020876                _etext = .
 
-.BOOT           0x00020818       0x3a
- .BOOT          0x00020818       0x3a sp_driver.o
-                0x00020818                SP_LoadFlashPage
+.BOOT           0x00020876       0x3a
+ .BOOT          0x00020876       0x3a sp_driver.o
+                0x00020876                SP_LoadFlashPage
 
-.data           0x00802000        0x0 load address 0x00020852
+.data           0x00802000        0x0 load address 0x000208b0
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -489,8 +491,8 @@ END GROUP
                 0x00802000                end_of_flashing
  *(COMMON)
                 0x00802001                PROVIDE (__bss_end, .)
-                0x00020852                __data_load_start = LOADADDR (.data)
-                0x00020852                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000208b0                __data_load_start = LOADADDR (.data)
+                0x000208b0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802001        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -561,21 +563,21 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xd8
+.debug_aranges  0x00000000       0xe0
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0xb0 bootboard.o
+                0x00000000       0xb8 bootboard.o
  .debug_aranges
-                0x000000b0       0x28 sp_driver.o
+                0x000000b8       0x28 sp_driver.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x49bb
+.debug_info     0x00000000     0x4aba
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x354c E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_info    0x0000354c     0x13f2 bootboard.o
- .debug_info    0x0000493e       0x7d sp_driver.o
+ .debug_info    0x0000354c     0x14f1 bootboard.o
+ .debug_info    0x00004a3d       0x7d sp_driver.o
 
 .debug_abbrev   0x00000000     0x367b
  *(.debug_abbrev)
@@ -583,25 +585,25 @@ END GROUP
  .debug_abbrev  0x0000327a      0x3ef bootboard.o
  .debug_abbrev  0x00003669       0x12 sp_driver.o
 
-.debug_line     0x00000000      0xdac
+.debug_line     0x00000000      0xde9
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x3a9 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_line    0x000003a9      0x651 bootboard.o
- .debug_line    0x000009fa      0x3b2 sp_driver.o
+ .debug_line    0x000003a9      0x68e bootboard.o
+ .debug_line    0x00000a37      0x3b2 sp_driver.o
 
-.debug_frame    0x00000000      0x23c
+.debug_frame    0x00000000      0x270
  *(.debug_frame)
- .debug_frame   0x00000000      0x23c bootboard.o
+ .debug_frame   0x00000000      0x270 bootboard.o
 
-.debug_str      0x00000000     0x2dcc
+.debug_str      0x00000000     0x2de2
  *(.debug_str)
  .debug_str     0x00000000     0x23b9 E:/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a1/avrxmega7/crtatxmega128a1.o
- .debug_str     0x000023b9      0xa13 bootboard.o
-                                0xa99 (size before relaxing)
+ .debug_str     0x000023b9      0xa29 bootboard.o
+                                0xaaf (size before relaxing)
 
-.debug_loc      0x00000000      0xa37
+.debug_loc      0x00000000      0xb73
  *(.debug_loc)
- .debug_loc     0x00000000      0xa37 bootboard.o
+ .debug_loc     0x00000000      0xb73 bootboard.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -621,10 +623,10 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xf0
+.debug_ranges   0x00000000       0xf8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0xd0 bootboard.o
- .debug_ranges  0x000000d0       0x20 sp_driver.o
+ .debug_ranges  0x00000000       0xd8 bootboard.o
+ .debug_ranges  0x000000d8       0x20 sp_driver.o
 
 .debug_macro
  *(.debug_macro)

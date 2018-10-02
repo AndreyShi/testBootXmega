@@ -183,6 +183,9 @@
     <Compile Include="CPin.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="CRtc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="CSerial.h">
       <SubType>compile</SubType>
     </Compile>
